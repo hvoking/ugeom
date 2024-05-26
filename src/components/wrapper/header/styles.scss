@@ -1,0 +1,21 @@
+.m2b-header{
+  background-color: rgba(0, 0, 0, 1);
+  display: grid;
+  grid-template-columns: min-content auto auto min-content;
+  grid-gap: 8px;
+  align-items: center;
+}
+.small-header {
+  display: none;
+}
+.gg-logo {
+  height: 45px;
+}
+@media screen and (max-width: 600px) {
+  .small-header {
+    display: block;
+  }
+  .normal-header {
+    display: none;
+  }
+}
