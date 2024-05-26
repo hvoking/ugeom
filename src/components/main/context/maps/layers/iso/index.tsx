@@ -4,11 +4,6 @@ import { useContext, createContext } from 'react';
 // Context imports
 import { useIsoPolygonApi } from '../../../api/isoPolygon';
 
-// Third-party imports
-// @ts-ignore
-// eslint-disable-next-line import/no-webpack-loader-syntax
-import { GeoJsonLayer } from 'deck.gl';
-
 const IsoLayerContext: React.Context<any> = createContext(null);
 
 export const useIsoLayer = () => {

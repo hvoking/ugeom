@@ -5,33 +5,17 @@ import { useCallback } from 'react';
 import { Pin } from './pin';
 import { Clusters } from './clusters';
 
-// Layers imports
-import { useCitiesLayer } from '../../context/maps/layers/cities';
-
 // Context imports
 import { useMapbox } from '../../context/maps/mapbox';
 import { useGeo } from '../../context/filters/geo';
 
 // Third-party imports
-import { Map, useControl } from 'react-map-gl';
-import { DeckProps } from '@deck.gl/core/typed';
-import { MapboxOverlay } from '@deck.gl/mapbox/typed';
+import { Map } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
-const DeckGLOverlay = (props: DeckProps) => {
-  const deck = useControl<any>(() => new MapboxOverlay(props));
-  deck.setProps(props);
-  return null;
-}
 
 export const MapContainer = () => {
 	const { viewport, setMarker, setPlaceCoordinates } = useGeo();
 	const { mapRef, basemap } = useMapbox();
-
-	// Layers
-	const { citiesLayer } = useCitiesLayer();
-
-	const layers: any = [ citiesLayer ];
 
 	const onDblClick = useCallback((e: any) => {
 		const lng = e.lngLat.lng;
@@ -51,7 +35,6 @@ export const MapContainer = () => {
 			doubleClickZoom={false}
 			preserveDrawingBuffer={true}
 		>
-			<DeckGLOverlay layers={layers}/>
 			<Pin/>
 			<Clusters/>
 		</Map>
