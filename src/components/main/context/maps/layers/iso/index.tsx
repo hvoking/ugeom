@@ -21,7 +21,7 @@ export const IsoLayerProvider = ({children}: any) => {
 	    source: 'isoSource',
 	    paint: {
 	      'fill-color': 'rgb(222, 112, 112)',
-	      'fill-opacity': 0.8,
+	      'fill-opacity': 0.2,
 	    },
 	  };
 
