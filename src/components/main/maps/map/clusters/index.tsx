@@ -1,8 +1,8 @@
 // Context imports
 import { useCnpjApi } from '../../../context/api/cnpj';
 
-import { researchClusterLayer, foodClusterLayer, educationClusterLayer, servicesClusterLayer, retailClusterLayer } from './layers';
-import { researchClusterText, foodClusterText, educationClusterText, servicesClusterText, retailClusterText } from './layers/text';
+import { createClusterLayer } from './layers';
+import { createClusterTextLayer } from './layers/text';
 
 // App imports
 import { Unclustered } from './unclustered';
@@ -31,6 +31,18 @@ export const Clusters = () => {
 		}
 		return false
 	}
+
+	const servicesClusterLayer = createClusterLayer('services', 'rgba(0, 201, 126, ');
+	const educationClusterLayer = createClusterLayer('education', 'rgba(255, 0, 0, ');
+	const foodClusterLayer = createClusterLayer('food', 'rgba(255, 173, 158, ');
+	const researchClusterLayer = createClusterLayer('research', 'rgba(51, 106, 239, ');
+	const retailClusterLayer = createClusterLayer('retail', 'rgba(253, 188, 85, ');
+
+	const servicesClusterText = createClusterTextLayer('services');
+	const educationClusterText = createClusterTextLayer('education');
+	const foodClusterText = createClusterTextLayer('food');
+	const researchClusterText = createClusterTextLayer('research');
+	const retailClusterText = createClusterTextLayer('retail');
 
 	return (
 		<>
