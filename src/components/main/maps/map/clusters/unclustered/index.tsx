@@ -1,11 +1,11 @@
-// Contex imports
-import { useCnpjClusters } from '../../../../context/maps/clusters/cnpj';
+// App imports
+import { unclusteredPointLayer } from '../layers';
 
 // Third party imports
 import { Source, Layer } from 'react-map-gl';
 
 export const Unclustered = ({ cnpjData, getColor, getLabel, cnpjProperties }: any) => {
-	const { unclusteredPointLayer } = useCnpjClusters();
+	
 
 	const geojsonPoints: any = cnpjData && cnpjData.reduce((total: any, item: any) => {
 		total.push({

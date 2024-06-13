@@ -1,10 +1,8 @@
 // Context imports
 import { useCnpjApi } from '../../../context/api/cnpj';
-import { useResearchClusters } from '../../../context/maps/clusters/research';
-import { useFoodClusters } from '../../../context/maps/clusters/food';
-import { useEducationClusters } from '../../../context/maps/clusters/education';
-import { useServicesClusters } from '../../../context/maps/clusters/services';
-import { useRetailClusters } from '../../../context/maps/clusters/retail';
+
+import { researchClusterLayer, foodClusterLayer, educationClusterLayer, servicesClusterLayer, retailClusterLayer } from './layers';
+import { researchClusterText, foodClusterText, educationClusterText, servicesClusterText, retailClusterText } from './layers/text';
 
 // App imports
 import { Unclustered } from './unclustered';
@@ -13,11 +11,6 @@ import { IsoPolygon } from './iso';
 
 export const Clusters = () => {
 	const { cnpjData, cnpjProperties } = useCnpjApi();
-	const { researchClusterLayer, researchClusterCountLayer } = useResearchClusters();
-	const { foodClusterLayer, foodClusterCountLayer } = useFoodClusters();
-	const { educationClusterLayer, educationClusterCountLayer } = useEducationClusters();
-	const { servicesClusterLayer, servicesClusterCountLayer } = useServicesClusters();
-	const { retailClusterLayer, retailClusterCountLayer } = useRetailClusters();
 
 	const getColor: any = (object: any, value: any) => {
 		const currentKey: any = Object.keys(object).find(
@@ -54,7 +47,7 @@ export const Clusters = () => {
 				getLabel={getLabel}
 				label="pesquisa"
 				clusterLayer={researchClusterLayer}
-				countLayer={researchClusterCountLayer}
+				countLayer={researchClusterText}
 			/>
 			<Clustered
 				cnpjData={cnpjData} 
@@ -62,7 +55,7 @@ export const Clusters = () => {
 				getLabel={getLabel}
 				label="alimentacao"
 				clusterLayer={foodClusterLayer}
-				countLayer={foodClusterCountLayer}
+				countLayer={foodClusterText}
 			/>
 			<Clustered
 				cnpjData={cnpjData} 
@@ -70,7 +63,7 @@ export const Clusters = () => {
 				getLabel={getLabel}
 				label="educacao"
 				clusterLayer={educationClusterLayer}
-				countLayer={educationClusterCountLayer}
+				countLayer={educationClusterText}
 			/>
 			<Clustered
 				cnpjData={cnpjData} 
@@ -78,7 +71,7 @@ export const Clusters = () => {
 				getLabel={getLabel}
 				label="servicos"
 				clusterLayer={servicesClusterLayer}
-				countLayer={servicesClusterCountLayer}
+				countLayer={servicesClusterText}
 			/>
 			<Clustered
 				cnpjData={cnpjData} 
@@ -86,7 +79,7 @@ export const Clusters = () => {
 				getLabel={getLabel}
 				label="varejo"
 				clusterLayer={retailClusterLayer}
-				countLayer={retailClusterCountLayer}
+				countLayer={retailClusterText}
 			/>
 		</>
 	)
