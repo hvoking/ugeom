@@ -10,7 +10,7 @@ import './styles.scss';
 // Context imports
 import { usePolygonApi } from '../../context/api/polygon';
 import { useIsoPolygonApi } from '../../context/api/isoPolygon';
-import { useSvgMapSizes } from '../../context/sizes/svgMap';
+import { useSvgMapSizes } from '../../context/sizes/bottom/svgMap';
 import { useGeo } from '../../context/filters/geo';
 import { useReverseGeocodingApi } from '../../context/api/google/reverse';
 

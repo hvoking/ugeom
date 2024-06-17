@@ -2,7 +2,7 @@
 import { useEffect, useRef, useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useSvgMapSizes } from '../../../context/sizes/svgMap';
+import { useSvgMapSizes } from '../../../context/sizes/bottom/svgMap';
 
 // Third-party imports
 import * as d3 from 'd3';
