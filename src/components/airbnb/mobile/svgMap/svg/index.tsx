@@ -1,11 +1,8 @@
 // React imports
-import { useEffect, useRef, useCallback, Children, cloneElement } from 'react';
+import { useRef, useCallback, Children, cloneElement } from 'react';
 
 // Context imports
 import { useSvgMapSizes } from '../../../context/sizes/bottom/svgMap';
-
-// Third-party imports
-import * as d3 from 'd3';
 
 export const SVGWrapper = ({ children }: any) => {
 	const svgRef = useRef<any>(null);

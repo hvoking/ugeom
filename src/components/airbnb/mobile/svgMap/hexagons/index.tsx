@@ -28,14 +28,10 @@ export const Hexagons = ({ path }: any) => {
 		const avg = d3.mean(prices);
 		return avg
 	}
-	const filterHexagons = (avg: any) => {
-		return leftPosition < avg && avg < rightPosition
-	}
 	return (
 		<>
 			{hexagonsData && hexagonsData.map((item: any, index: any) => {
 				const avg = hexagonAvg(item.properties);
-
 				return (
 					<path
 						key={index}

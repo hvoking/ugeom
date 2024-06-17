@@ -9,10 +9,7 @@ export const Logo = () => {
 				src="static/logos/white.svg" 
 				alt="header-logo"
 			/>
-			<div>
-				<div className="logo-name">Gustavo Gonzalez</div>
-				<div className="logo-profession">Computational Designer</div>
-			</div>
+			<div className="logo-name">AIRBNB METRICS</div>
 		</div>
 	)
 }
