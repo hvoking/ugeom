@@ -1,11 +1,11 @@
 // App imports
-import { Business } from './components';
+import { UgeomRoutes } from './routes';
 import './styles.scss';
 
 export const App = () => {
   return (
     <div className="App">
-        <Business/>
+        <UgeomRoutes/>
     </div>
   );
 }

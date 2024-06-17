@@ -1,0 +1,31 @@
+/* General Container Styles */
+.listing-container {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.airbnb-right {
+	display: grid;
+	grid-template-rows: 30px auto;
+	background-color: rgba(33, 33, 43, 1);
+	border-radius: 20px;
+	overflow: hidden;
+	color: rgba(255, 255, 255, 1);
+}
+.airbnb-images-wrapper {
+	display: grid;
+	grid-gap: 10px;
+	height: calc(100vh - 100px);
+	overflow-y: scroll;
+	padding-left: 20px;
+	padding-right: 10px;
+	padding-top: 5px;
+}
+.airbnb-images-wrapper::-webkit-scrollbar {
+  width: 15px;
+  background: rgba(33, 33, 43, 1);
+}
+.airbnb-images-wrapper::-webkit-scrollbar-thumb {
+  border-right: 5px solid rgba(33, 33, 43, 1);
+  background: #555;
+}
