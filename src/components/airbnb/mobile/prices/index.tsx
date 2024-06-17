@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 // App imports
 import { SVGWrapper } from './svg';
 import { Bars } from './bars';
-import { Header } from './header';
 import { Marker } from './marker';
 import { Numbers } from './numbers';
 import { Flags } from './flags';
@@ -92,8 +91,7 @@ export const Prices = ({ pricesData }: any) => {
 	}, [maxBound]);
 
 	return (
-		<div className="bottom-prices-item-wrapper">
-			<Header/>
+		<div className="mobile-airbnb-item-wrapper">
 			<SVGWrapper>
 				<Bars
 					bottomLimit={bottomLimit}

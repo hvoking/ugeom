@@ -1,11 +1,15 @@
 // React imports
-import { useCallback, Children, cloneElement } from 'react';
+import { useEffect, useRef, useCallback, Children, cloneElement } from 'react';
 
 // Context imports
-import { useRoomsGaugeSizes } from '../../../../context/sizes/bottom/rooms';
+import { useSvgMapSizes } from '../../../context/sizes/svgMap';
+
+// Third-party imports
+import * as d3 from 'd3';
 
 export const SVGWrapper = ({ children }: any) => {
-	const { width, height, setWidth, setHeight, margin } = useRoomsGaugeSizes();
+	const svgRef = useRef<any>(null);
+	const { width, height, setWidth, setHeight, margin } = useSvgMapSizes();
 
 	const parentRef = useCallback((node: any) => {
 		if (node) {
@@ -15,9 +19,14 @@ export const SVGWrapper = ({ children }: any) => {
 	}, []);
 
 	return (
-		<div style={{width: "100%", height: "100%"}} ref={parentRef}>
+		<div ref={parentRef} style={{width: "100%", height: "100%"}}>
 			{width &&
-				<svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none">
+				<svg 
+					ref={svgRef}
+					fill="none" 
+					viewBox={`0 0 ${width} ${height}`} 
+					preserveAspectRatio="none"
+				>
 					<g transform={`translate(${margin.left}, ${margin.top})`}>
 						{
 				          Children.map(children, (child, index) => {
@@ -25,7 +34,8 @@ export const SVGWrapper = ({ children }: any) => {
 				          })
 				        }
 			        </g>
-			</svg>}
+				</svg>
+			}
 		</div>
 	)
 }

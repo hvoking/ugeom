@@ -33,8 +33,7 @@ export const Timeseries = () => {
 	  .range([0, innerHeight]);  
 
 	return (
-		<div className="bottom-prices-item-wrapper">
-			<div className="sidebar-title-wrapper">Timeseries</div>
+		<div className="mobile-airbnb-item-wrapper">
 			<SVGWrapper>
 				<Wrapper
 					xScale={xScale}  

@@ -4,10 +4,10 @@ import { useState } from 'react';
 // App imports
 import { Carousel, CarouselItem } from './carousel';
 import { Header } from './header';
-import { Rooms } from './rooms';
 import { Prices } from './prices';
 import { Timeseries } from './timeseries';
 import { Description } from './description';
+import { SvgMap } from './svgMap';
 import './styles.scss';
 
 // Context imports
@@ -26,7 +26,7 @@ export const Mobile = () => {
 			<Header activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>
 			<Carousel activeIndex={activeIndex} setActiveIndex={setActiveIndex}>
 				<CarouselItem>
-					<Rooms/>
+					<SvgMap/>
 				</CarouselItem>
 				<CarouselItem>
 					<Prices pricesData={pricesData}/>

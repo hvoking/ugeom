@@ -22,7 +22,7 @@ export const ImagesHeader = ({ propertyInfo, setActivePropertyInfo }: any) => {
 			<div>{siFormat(Math.round(propertyInfo.price))} £</div>
 			<img
 				className="ads-cancel-search-cross"
-				src="static/logos/cancel_search.svg" 
+				src="static/components/search/cancel_search.svg" 
 				alt="search-icon"
 				onClick={onClick}
 			/>
