@@ -1,6 +1,3 @@
-// App imports
-import './styles.scss';
-
 export const Logo = () => {
 	return (
 		<div className="logo-wrapper">
@@ -9,7 +6,7 @@ export const Logo = () => {
 				src="static/logos/white.svg" 
 				alt="header-logo"
 			/>
-			<div className="logo-name">AIRBNB METRICS</div>
+			<div className="logo-name" style={{paddingLeft: "8px"}}>Airbnb Metrics</div>
 		</div>
 	)
 }
