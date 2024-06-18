@@ -28,9 +28,9 @@ export const Hexagons = ({ path }: any) => {
 		const avg = d3.mean(prices);
 		return avg
 	}
-	const maxLength: any = d3.max(hexagonsData.map((item: any) => item.properties.length));
+	const maxLength: any = hexagonsData && d3.max(hexagonsData.map((item: any) => item.properties.length));
 
-	const opacityScale = d3.scaleLinear()
+	const opacityScale = hexagonsData && d3.scaleLinear()
 		.range([0.6, 1])
 		.domain([0, maxLength])
 
