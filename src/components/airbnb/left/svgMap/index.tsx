@@ -29,7 +29,6 @@ export const SvgMap = () => {
 	if (!isoPolygonData || !polygonData || !polygonData[0]) return (<></>)
 
 	const city = polygonData[0].city_geom[0];
-	const polygon = isoPolygonData.features[0].geometry;
 
 	const projection = d3.geoIdentity()
 		.reflectY(true)
@@ -55,18 +54,11 @@ export const SvgMap = () => {
 					<SVGWrapper>
 						<g onClick={onClick}>
 							<Hexagons path={path}/>
-							<path
-								fill="rgba(222, 112, 112, 0.4)"
-								stroke="rgba(255, 0, 0, 1)"
-								strokeWidth={0.1}
-								className="feature" 
-								d={`${path(polygon)}`}
-							/>
 							<image
-							  x={pinCoordinates[0] - 5}
-							  y={pinCoordinates[1] - 15}
-							  width={10}
-							  height={15}
+							  x={pinCoordinates[0] - 4}
+							  y={pinCoordinates[1] - 10}
+							  width={8}
+							  height={12}
 							  href="static/components/maps/marker.svg"
 							  className="pin-marker"
 							/>
