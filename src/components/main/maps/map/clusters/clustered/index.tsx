@@ -1,7 +1,22 @@
 // Third party imports
 import { Source, Layer } from 'react-map-gl';
 
-export const Clustered = ({ cnpjData, cnpjProperties, getLabel, label, clusterLayer, countLayer }: any) => {
+// Context imports
+import { useCnpjApi } from '../../../../context/api/cnpj';
+
+export const Clustered = ({ label, clusterLayer, countLayer }: any) => {
+	const { cnpjData, cnpjProperties } = useCnpjApi();
+
+	const getLabel: any = (object: any, value: any) => {
+		const currentKey: any = Object.keys(object).find(
+			key => object[key].label === value
+		)
+		if (object[currentKey]) {
+			return currentKey
+		}
+		return false
+	}
+
 	const geojsonPoints: any = cnpjData && cnpjData.reduce((total: any, item: any) => {
 		if (getLabel(cnpjProperties, item.cnae_divisao) === label) {
 			total.push({
