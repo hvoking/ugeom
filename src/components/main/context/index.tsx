@@ -1,6 +1,6 @@
 // App imports
 import { FiltersProvider } from './filters';
-import { MapsProvider } from './maps';
+import { MapboxProvider } from './mapbox';
 import { ApiProvider } from './api';
 import { SizesProvider } from './sizes';
 
@@ -9,9 +9,9 @@ export const MainProvider = ({children}: any) => {
     <FiltersProvider>
     <ApiProvider>
     <SizesProvider>
-    <MapsProvider>
+    <MapboxProvider>
       {children}
-    </MapsProvider>
+    </MapboxProvider>
     </SizesProvider>
     </ApiProvider>
     </FiltersProvider>

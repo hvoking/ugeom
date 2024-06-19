@@ -1,5 +1,4 @@
 // Context imports
-import { useTooltip } from '../../../../context/maps/tooltip';
 import { usePropertyType } from '../../../../context/filters/property';
 import { useLinesLimits } from '../../../../context/limits/lines';
 import { usePointsLimits } from '../../../../context/limits/points';
@@ -9,8 +8,7 @@ import { Source, Layer } from 'react-map-gl';
 import * as d3 from 'd3';
 
 export const IconsLayer = () => {
-	const { setPropertyInfo, setActivePropertyInfo } = useTooltip();
-	const { currentPropertyId, setCurrentPropertyId } = usePropertyType();
+	const { currentPropertyId } = usePropertyType();
 	const { bottomLimit, topLimit } = useLinesLimits();
 	const { filterPoints } = usePointsLimits();
 

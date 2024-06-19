@@ -6,7 +6,7 @@ import { Pin } from './pin';
 import { Clusters } from './clusters';
 
 // Context imports
-import { useMapbox } from '../../context/maps/mapbox';
+import { useMapbox } from '../../context/mapbox';
 import { useGeo } from '../../context/filters/geo';
 
 // Third-party imports

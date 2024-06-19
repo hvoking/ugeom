@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../filters/geo';
+import { useGeo } from '../filters/geo';
 
 const MapboxContext: React.Context<any> = createContext(null)
 
