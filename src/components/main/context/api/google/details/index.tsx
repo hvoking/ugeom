@@ -4,9 +4,6 @@ import { useState, useEffect, useContext, createContext } from 'react';
 // Context imports
 import { useGeo } from '../../../filters/geo';
 
-// Variable imports
-import { cities } from '../../../../utils/cities';
-
 const GoogleDetailsApiContext: React.Context<any> = createContext(null)
 
 export const useGoogleDetailsApi = () => {
@@ -16,7 +13,7 @@ export const useGoogleDetailsApi = () => {
 }
 
 export const GoogleDetailsApiProvider = ({children}: any) => {
-	const { placeId, setPlaceCoordinates, setCityName } = useGeo();
+	const { placeId, setPlaceCoordinates } = useGeo();
 	const [ googleDetailsData, setGoogleDetailsData ] = useState<any>(null);
 	
 	useEffect(() => {
@@ -36,19 +33,10 @@ export const GoogleDetailsApiProvider = ({children}: any) => {
 
 	useEffect(() => {
 		if (googleDetailsData) {
-			const addressComponents = googleDetailsData.result.address_components;
 			const geometry = googleDetailsData.result.geometry
 			const longitude = geometry.location.lng;
 			const latitude = geometry.location.lat;
 
-			for (let i = 0; i < addressComponents.length; i++) {
-			  const component = addressComponents[i];
-			  if (component.types.includes("administrative_area_level_2")) {
-			  	const currentCityName = component.long_name.toLowerCase();
-				setCityName(cities[currentCityName]);
-			    break;
-			  }
-			}
 			setPlaceCoordinates({
 				longitude: longitude, 
 				latitude: latitude

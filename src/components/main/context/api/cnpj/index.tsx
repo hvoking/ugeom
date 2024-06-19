@@ -3,9 +3,12 @@ import { useState, useEffect, useContext, createContext } from 'react';
 
 // App imports
 import { cnpjProperties } from './properties';
+import { cities } from './cities';
 
 // Context imports
 import { usePolygonApi } from '../polygon';
+import { useGeo } from '../../filters/geo';
+import { useGoogleDetailsApi } from '../google/details';
 
 const CnpjApiContext: React.Context<any> = createContext(null)
 
@@ -17,8 +20,10 @@ export const useCnpjApi = () => {
 
 export const CnpjApiProvider = ({children}: any) => {
 	const { polygonData } = usePolygonApi();
+	const { setCityName } = useGeo();
 	const [ cnpjData, setCnpjData ] = useState<any>(null);
 	const [ cnpjCountsData, setCnpjCountsData ] = useState<any>(null);
+	const { googleDetailsData } = useGoogleDetailsApi();
 
 	useEffect(() => {
 	  const fetchData = async () => {
@@ -34,6 +39,21 @@ export const CnpjApiProvider = ({children}: any) => {
 	  }
 	  polygonData && fetchData();
 	}, [ polygonData ]);
+
+	useEffect(() => {
+		if (googleDetailsData) {
+			const addressComponents = googleDetailsData.result.address_components;
+
+			for (let i = 0; i < addressComponents.length; i++) {
+			  const component = addressComponents[i];
+			  if (component.types.includes("administrative_area_level_2")) {
+			  	const currentCityName = component.long_name.toLowerCase();
+				setCityName(cities[currentCityName]);
+			    break;
+			  }
+			}
+		}
+	}, [ googleDetailsData ])
 
 	const getLabel: any = (object: any, value: any) => {
 		const currentKey: any = Object.keys(object).find(
