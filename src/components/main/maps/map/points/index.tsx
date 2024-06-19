@@ -1,19 +1,39 @@
-// App imports
-import { unclusteredPointLayer } from '../layers';
+// Context imports
+import { useCnpjApi } from '../../../context/api/cnpj';
 
 // Third party imports
-import { Source, Layer } from 'react-map-gl';
+import { Source, Layer, LayerProps } from 'react-map-gl';
 
-export const Unclustered = ({ cnpjData, getColor, getLabel, cnpjProperties }: any) => {
+export const Points = () => {
+	const { cnpjData, cnpjProperties } = useCnpjApi();
+
+	const unclusteredPointLayer: LayerProps = {
+	  id: 'unclustered-point',
+	  type: 'circle',
+	  source: 'cnpj-clusters',
+	  filter: ['!', ['has', 'point_count']],
+	  paint: {
+	    'circle-color': ['get', 'color'],
+	    'circle-radius': 5,
+	  }
+	};
 	
-
+	const getColor: any = (object: any, value: any) => {
+		const currentKey: any = Object.keys(object).find(
+			key => object[key].label === value
+		)
+		if (object[currentKey]) {
+			return object[currentKey].color
+		}
+		return "rgba(255, 255, 255, 0)"
+	}
+	
 	const geojsonPoints: any = cnpjData && cnpjData.reduce((total: any, item: any) => {
 		total.push({
 			type: "Feature",
 			properties: {
 				cluster: false,
-		        color: getColor(cnpjProperties, item.cnae_divisao),
-		        label: getLabel(cnpjProperties, item.cnae_divisao)
+		        color: getColor(cnpjProperties, item.cnae_divisao)
 	    	},
 		    geometry: { 
 		    	type: "Point", 
@@ -49,4 +69,4 @@ export const Unclustered = ({ cnpjData, getColor, getLabel, cnpjProperties }: an
 	)
 }
 
-Unclustered.displayName="Unclustered";
+Points.displayName="Points";

@@ -5,22 +5,10 @@ import { createClusterLayer } from './layers';
 import { createClusterTextLayer } from './layers/text';
 
 // App imports
-import { Unclustered } from './unclustered';
 import { Clustered } from './clustered';
-import { IsoPolygon } from './iso';
 
 export const Clusters = () => {
 	const { cnpjData, cnpjProperties } = useCnpjApi();
-
-	const getColor: any = (object: any, value: any) => {
-		const currentKey: any = Object.keys(object).find(
-			key => object[key].label === value
-		)
-		if (object[currentKey]) {
-			return object[currentKey].color
-		}
-		return "rgba(255, 255, 255, 0)"
-	}
 
 	const getLabel: any = (object: any, value: any) => {
 		const currentKey: any = Object.keys(object).find(
@@ -46,13 +34,6 @@ export const Clusters = () => {
 
 	return (
 		<>
-			<IsoPolygon/>
-			<Unclustered 
-				cnpjData={cnpjData} 
-				getColor={getColor} 
-				getLabel={getLabel} 
-				cnpjProperties={cnpjProperties}
-			/>
 			<Clustered
 				cnpjData={cnpjData} 
 				cnpjProperties={cnpjProperties} 

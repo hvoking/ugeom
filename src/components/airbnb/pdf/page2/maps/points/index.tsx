@@ -7,7 +7,7 @@ import { usePointsLimits } from '../../../../context/limits/points';
 import { Source, Layer } from 'react-map-gl';
 import * as d3 from 'd3';
 
-export const IconsLayer = () => {
+export const PointsLayer = () => {
 	const { currentPropertyId } = usePropertyType();
 	const { bottomLimit, topLimit } = useLinesLimits();
 	const { filterPoints } = usePointsLimits();
@@ -16,40 +16,14 @@ export const IconsLayer = () => {
 
 	const prices = filterPoints.map((item: any) => item['price']);
 
-	// const onClick = (info: any) => {
-  	// 	setActivePropertyInfo(true);
-  	// 	info.object && setPropertyInfo(info.object);
-  	// };
-
-  	// const onHover = (info: any) => {
-  	// 	info.object && setCurrentPropertyId(info.object.property_id);
-  	// 	!info.object && setCurrentPropertyId(null);
-  	// }
-
 	const minPrice: any = d3.min(prices);
 	const maxPrice: any = d3.max(prices)
 
 	const pricesScale = d3.scaleLinear()
 		.domain([minPrice, maxPrice])
-		.range([1, 100])
+		.range([1, 100]);
 
-	const iconsLayer: any = {
-	    id: 'price-icon',
-	    type: 'circle',
-	    source: 'iconsSource',
-	    paint: {
-	      'circle-radius': [
-	        'interpolate',
-	        ['linear'],
-	        ['get', 'size'],
-	        1, 3, // Min size
-	        100, 9 // Max size
-	      ],
-	      'circle-color': ['get', 'markerColor'],
-	    },
-	  };
-
-	const iconsSource: any = {
+	const pointsSource: any = {
 		type: 'geojson',
 	    data: {
 		    type: 'FeatureCollection',
@@ -76,9 +50,25 @@ export const IconsLayer = () => {
 		  }
 		}
 
+	const pointsLayer: any = {
+	    id: 'price-icon',
+	    type: 'circle',
+	    source: 'pointsSource',
+	    paint: {
+	      'circle-radius': [
+	        'interpolate',
+	        ['linear'],
+	        ['get', 'size'],
+	        1, 3, // Min size
+	        100, 9 // Max size
+	      ],
+	      'circle-color': ['get', 'markerColor'],
+	    },
+	  };
+
 	return (
-		<Source id="iconsSource" {...iconsSource}>
-			<Layer {...iconsLayer}/>
+		<Source id="pointsSource" {...pointsSource}>
+			<Layer {...pointsLayer}/>
 		</Source>
 	)
 }

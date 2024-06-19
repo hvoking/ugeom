@@ -1,18 +1,6 @@
 // Third party imports
 import type { LayerProps } from 'react-map-gl';
 
-export const unclusteredPointLayer: LayerProps = {
-  id: 'unclustered-point',
-  type: 'circle',
-  source: 'cnpj-clusters',
-  filter: ['!', ['has', 'point_count']],
-  paint: {
-    'circle-color': ['get', 'color'],
-    'circle-radius': 5,
-  }
-};
-
-
 export const createClusterLayer = (source: string, color: string): LayerProps => ({
   id: `${source}-clusters`,
   type: 'circle',

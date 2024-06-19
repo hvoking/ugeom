@@ -4,6 +4,8 @@ import { useCallback } from 'react';
 // App imports
 import { Pin } from './pin';
 import { Clusters } from './clusters';
+import { IsoPolygon } from './iso';
+import { Points } from './points';
 
 // Context imports
 import { useMapbox } from '../../context/mapbox';
@@ -36,7 +38,9 @@ export const MapContainer = () => {
 			preserveDrawingBuffer={true}
 		>
 			<Pin/>
+			<IsoPolygon/>
 			<Clusters/>
+			<Points/>
 		</Map>
 	)
 }

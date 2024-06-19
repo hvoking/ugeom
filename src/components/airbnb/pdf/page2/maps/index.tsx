@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
 import { Pin } from './pin';
 import { MapControllers } from './controllers';
 import { PanSelector } from './pan';
-import { IconsLayer } from './icons';
+import { PointsLayer } from './points';
 import { Buildings } from './buildings';
 
 // Context imports
@@ -44,7 +44,7 @@ export const PdfMaps = () => {
 			antialias={true}
 			preserveDrawingBuffer={true}
 		>
-			<IconsLayer/>
+			<PointsLayer/>
 			<Buildings/>
 			<Pin/>
 			<MapControllers/>
