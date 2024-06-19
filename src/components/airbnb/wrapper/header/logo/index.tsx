@@ -3,7 +3,7 @@ export const Logo = () => {
 		<div className="logo-wrapper">
 			<img 
 				className="logo"
-				src="static/logos/white.svg" 
+				src="static/logos/pink.svg" 
 				alt="header-logo"
 			/>
 			<div className="logo-name" style={{paddingLeft: "8px"}}>Airbnb Metrics</div>
