@@ -4,7 +4,7 @@ import { Source, Layer } from 'react-map-gl';
 // Context imports
 import { useCnpjApi } from '../../../../context/api/cnpj';
 
-export const Clustered = ({ label, clusterLayer, countLayer }: any) => {
+export const Circles = ({ label, clusterLayer, textLayer }: any) => {
 	const { cnpjData, cnpjProperties } = useCnpjApi();
 
 	const getLabel: any = (object: any, value: any) => {
@@ -51,9 +51,9 @@ export const Clustered = ({ label, clusterLayer, countLayer }: any) => {
 			  clusterRadius={100}
 			>
 				<Layer {...clusterLayer}/>
-				<Layer {...countLayer}/>
+				<Layer {...textLayer}/>
 			</Source>
 	)
 }
 
-Clustered.displayName="Clustered";
+Circles.displayName="Circles";

@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { SVGWrapper } from './svg';
 import { Bars } from './bars';
 import { Marker } from './marker';
-import { Numbers } from './numbers';
 import { createJsonFromArray } from '../../utils/createArr';
 import { priceFormat } from '../../utils/constants';
 import { Legend } from './legend';
@@ -24,7 +23,7 @@ export const Prices = ({ linesData, pricesData }: any) => {
 	const { margin, innerWidth, innerHeight } = usePricesSizes();
 	const { setPriceMin, setPriceMax, leftPosition, setLeftPosition, rightPosition, setRightPosition } = usePrices();
 	const { startDate, finalDate } = useDates();
-	const { bottomLimit, topLimit, minLine, meanLine, maxLine } = useLinesLimits();
+	const { bottomLimit, topLimit, minLine, maxLine } = useLinesLimits();
 
 	const startDateParts = startDate.split("-");
 	const currentStartDate = new Date(`${startDateParts[2]}-${startDateParts[1]}-${startDateParts[0]}`);

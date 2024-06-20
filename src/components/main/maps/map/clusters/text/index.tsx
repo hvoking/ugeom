@@ -1,7 +1,7 @@
 // Third party imports
 import type { LayerProps } from 'react-map-gl';
 
-export const createClusterTextLayer = (source: string): LayerProps => ({
+export const createText = (source: string): LayerProps => ({
   id: `${source}-cluster-count`,
   type: 'symbol',
   source: `${source}-clusters`,

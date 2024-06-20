@@ -1,52 +1,52 @@
 // Context imports
-import { createClusterLayer } from './layers';
-import { createClusterTextLayer } from './layers/text';
+import { createLayer } from './layers';
+import { createText } from './text';
 
 // App imports
-import { Clustered } from './clustered';
+import { Circles } from './circles';
 
 export const Clusters = () => {
-	const researchClusterLayer = createClusterLayer('research', 'rgba(51, 106, 239, ');
-	const researchClusterText = createClusterTextLayer('research');
+	const researchClusterLayer = createLayer('research', 'rgba(51, 106, 239, ');
+	const researchClusterText = createText('research');
 
-	const foodClusterLayer = createClusterLayer('food', 'rgba(255, 173, 158, ');
-	const foodClusterText = createClusterTextLayer('food');
+	const foodClusterLayer = createLayer('food', 'rgba(255, 173, 158, ');
+	const foodClusterText = createText('food');
 
-	const educationClusterLayer = createClusterLayer('education', 'rgba(255, 0, 0, ');
-	const educationClusterText = createClusterTextLayer('education');
+	const educationClusterLayer = createLayer('education', 'rgba(255, 0, 0, ');
+	const educationClusterText = createText('education');
 
-	const servicesClusterLayer = createClusterLayer('services', 'rgba(0, 201, 126, ');
-	const servicesClusterText = createClusterTextLayer('services');
+	const servicesClusterLayer = createLayer('services', 'rgba(0, 201, 126, ');
+	const servicesClusterText = createText('services');
 
-	const retailClusterLayer = createClusterLayer('retail', 'rgba(253, 188, 85, ');
-	const retailClusterText = createClusterTextLayer('retail');
+	const retailClusterLayer = createLayer('retail', 'rgba(253, 188, 85, ');
+	const retailClusterText = createText('retail');
 
 	return (
 		<>
-			<Clustered
+			<Circles
 				label="pesquisa"
 				clusterLayer={researchClusterLayer}
-				countLayer={researchClusterText}
+				textLayer={researchClusterText}
 			/>
-			<Clustered 
+			<Circles 
 				label="alimentacao"
 				clusterLayer={foodClusterLayer}
-				countLayer={foodClusterText}
+				textLayer={foodClusterText}
 			/>
-			<Clustered
+			<Circles
 				label="educacao"
 				clusterLayer={educationClusterLayer}
-				countLayer={educationClusterText}
+				textLayer={educationClusterText}
 			/>
-			<Clustered
+			<Circles
 				label="servicos"
 				clusterLayer={servicesClusterLayer}
-				countLayer={servicesClusterText}
+				textLayer={servicesClusterText}
 			/>
-			<Clustered
+			<Circles
 				label="varejo"
 				clusterLayer={retailClusterLayer}
-				countLayer={retailClusterText}
+				textLayer={retailClusterText}
 			/>
 		</>
 	)

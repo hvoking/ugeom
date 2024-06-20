@@ -6,7 +6,7 @@ export const PanSelector = ({ setActivePan }: any) => {
 		<div className="pdf-basemaps-parent-wrapper">
 			<img 
 				className="pdf-basemaps-image"
-				src="static/components/pdf/maps/panIcon.png"
+				src="static/components/maps/panIcon.png"
 				alt="dark"
 				onClick={() => setActivePan((prev: boolean) => !prev)}
 			/>
