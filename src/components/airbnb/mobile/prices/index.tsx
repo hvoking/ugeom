@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { SVGWrapper } from './svg';
 import { Bars } from './bars';
 import { Marker } from './marker';
-import { Numbers } from './numbers';
+import { Legend } from './legend';
 import { Flags } from './flags';
 import { Ref } from './ref';
 
@@ -93,6 +93,16 @@ export const Prices = ({ pricesData }: any) => {
 	return (
 		<div className="mobile-airbnb-item-wrapper">
 			<SVGWrapper>
+				<Legend 
+					innerHeight={innerHeight} 
+					xScale={xPriceScale}
+					currentPosition={leftPosition}
+				/>
+				<Legend 
+					innerHeight={innerHeight} 
+					xScale={xPriceScale}
+					currentPosition={rightPosition}
+				/>
 				<Bars
 					bottomLimit={bottomLimit}
 					topLimit={topLimit}
@@ -132,12 +142,6 @@ export const Prices = ({ pricesData }: any) => {
 					maxBound={maxBound}
 				/>
 			</SVGWrapper>
-			<Numbers 
-				leftPosition={priceFormat(leftPosition)} 
-				rightPosition={priceFormat(rightPosition)}
-				setPriceMin={setPriceMin}
-				setPriceMax={setPriceMax}
-			/>
 	  </div>
 	)
 }
