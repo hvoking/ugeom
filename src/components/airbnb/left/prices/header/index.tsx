@@ -7,7 +7,7 @@ import { usePrices } from '../../../context/filters/prices';
 // Third-party imports
 import * as d3 from 'd3';
 
-export const Calculator = () => {
+export const Header = () => {
   const { samplesPrices } = usePrices();
 
   const mean = (arr: any) => {
@@ -26,11 +26,11 @@ export const Calculator = () => {
       <div className="property-prices">
         <div>avg</div>
         <div className="airbnb-property-prices-number">
-          {samplesPrices && siFormat(mean(samplesPrices)).replaceAll(",", ".")} £
+          {samplesPrices && siFormat(Math.round(mean(samplesPrices)))} £
         </div>
       </div>
     </div>
   )
 }
 
-Calculator.displayName="Calculator";
+Header.displayName="Header";

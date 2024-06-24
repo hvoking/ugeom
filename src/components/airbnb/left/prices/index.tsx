@@ -8,7 +8,7 @@ import { Marker } from './marker';
 import { createJsonFromArray } from '../../utils/createArr';
 import { priceFormat } from '../../utils/constants';
 import { Legend } from './legend';
-import { Calculator } from './calculator';
+import { Header } from './header';
 
 // Context imports
 import { usePricesSizes } from '../../context/sizes/prices';
@@ -81,8 +81,7 @@ export const Prices = ({ linesData, pricesData }: any) => {
 
 	return (
 		<div className="right-item-wrapper">
-			{/*<div className="sidebar-sub-title">Price range</div>*/}
-			<Calculator/>
+			<Header/>
 			<SVGWrapper>
 				<Legend 
 					innerHeight={innerHeight} 
