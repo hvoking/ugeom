@@ -3,8 +3,8 @@ export const Pin = ({ pinCoordinates }: any) => {
 		<image
 		  x={pinCoordinates[0] - 4}
 		  y={pinCoordinates[1] - 10}
-		  width={8}
-		  height={12}
+		  width={12}
+		  height={20}
 		  href="static/components/maps/marker.svg"
 		  className="pin-marker"
 		/>
