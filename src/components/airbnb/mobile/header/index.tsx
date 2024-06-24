@@ -17,10 +17,7 @@ export const Header = ({ activeIndex, setActiveIndex }: any) => {
 				Prices
 			</div>
 			<div onClick={() => setActiveIndex(2)} style={{color: active(2)}}>
-				Dates
-			</div>
-			<div onClick={() => setActiveIndex(3)} style={{color: active(3)}}>
-				Prices
+				Timeseries
 			</div>
 		</div>
 	)

@@ -34,9 +34,6 @@ export const Mobile = () => {
 				<CarouselItem>
 					<Timeseries/>
 				</CarouselItem>
-				<CarouselItem>
-					<Prices pricesData={pricesData}/>
-				</CarouselItem>
 			</Carousel>
 		</div>
 	)

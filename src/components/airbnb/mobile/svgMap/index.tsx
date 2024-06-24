@@ -5,11 +5,11 @@ import { useRef } from 'react';
 import { Hexagons } from './hexagons';
 import { SVGWrapper } from './svg';
 import { Location } from './location';
+import { Pin } from './pin';
 import './styles.scss';
 
 // Context imports
 import { usePolygonApi } from '../../context/api/polygon';
-import { useIsoPolygonApi } from '../../context/api/isoPolygon';
 import { useSvgMapSizes } from '../../context/sizes/bottom/svgMap';
 import { useGeo } from '../../context/filters/geo';
 import { useReverseGeocodingApi } from '../../context/api/google/reverse';
@@ -21,15 +21,13 @@ export const SvgMap = () => {
 	const svgContainerRef = useRef<any>(null);
 
 	const { polygonData } = usePolygonApi();
-	const { isoPolygonData } = useIsoPolygonApi();
 	const { innerWidth, innerHeight } = useSvgMapSizes();
-	const { setPlaceCoordinates } = useGeo();
+	const { placeCoordinates, setPlaceCoordinates } = useGeo();
 	const { currentAddress } = useReverseGeocodingApi();
 
-	if (!isoPolygonData || !polygonData || !polygonData[0]) return (<></>)
+	if (!polygonData || !polygonData[0]) return (<></>)
 
 	const city = polygonData[0].city_geom[0];
-	const polygon = isoPolygonData.features[0].geometry;
 
 	const projection = d3.geoIdentity()
 		.reflectY(true)
@@ -44,6 +42,8 @@ export const SvgMap = () => {
 	    setPlaceCoordinates({ latitude: lat, longitude: lng });
 	}
 
+	const pinCoordinates: any = projection([placeCoordinates.longitude, placeCoordinates.latitude]);
+
 	return (
 		<div className="mobile-airbnb-item-wrapper">
 			<div style={{display: "grid", gridTemplateColumns: "20px auto 20px"}}>
@@ -52,13 +52,7 @@ export const SvgMap = () => {
 					<SVGWrapper>
 						<g onClick={onClick}>
 							<Hexagons path={path}/>
-							<path
-								fill="rgba(222, 112, 112, 0.8)"
-								stroke="rgba(255, 0, 0, 1)"
-								strokeWidth={0.3}
-								className="feature" 
-								d={`${path(polygon)}`}
-							/>
+							<Pin pinCoordinates={pinCoordinates}/>
 						</g>
 					</SVGWrapper>
 				</div>

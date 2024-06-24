@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { Hexagons } from './hexagons';
 import { SVGWrapper } from './svg';
 import { Location } from './location';
+import { Pin } from './pin';
 import './styles.scss';
 
 // Context imports
@@ -54,14 +55,7 @@ export const SvgMap = () => {
 					<SVGWrapper>
 						<g onClick={onClick}>
 							<Hexagons path={path}/>
-							<image
-							  x={pinCoordinates[0] - 4}
-							  y={pinCoordinates[1] - 10}
-							  width={8}
-							  height={12}
-							  href="static/components/maps/marker.svg"
-							  className="pin-marker"
-							/>
+							<Pin pinCoordinates={pinCoordinates}/>
 						</g>
 					</SVGWrapper>
 				</div>
