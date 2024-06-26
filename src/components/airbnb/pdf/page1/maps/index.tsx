@@ -4,9 +4,9 @@ import { useState, useCallback } from 'react';
 // App imports
 import { Pin } from './pin';
 import { MapControllers } from './controllers';
-import { PanSelector } from './pan';
 import { PointsLayer } from './points';
 import { Buildings } from './buildings';
+import { BasemapsSelectors } from './basemaps';
 
 // Context imports
 import { useMapbox } from '../../../context/maps/mapbox';
@@ -21,7 +21,6 @@ export const PdfMaps = () => {
 	const { pdfMapRef } = useMapbox();
 	const { viewport, setMarker, setPlaceCoordinates } = useGeo();
 	const { setInitialMarker } = useIsoPolygonApi();
-	const [ activePan, setActivePan ] = useState(false);
 
 	const onDblClick = useCallback((event: any) => {
 		const lng = event.lngLat.lng;
@@ -40,7 +39,6 @@ export const PdfMaps = () => {
 			mapStyle="mapbox://styles/mapbox/light-v10"
 			onDblClick={onDblClick}
 			doubleClickZoom={false}
-			dragPan={activePan}
 			antialias={true}
 			preserveDrawingBuffer={true}
 		>
@@ -48,8 +46,8 @@ export const PdfMaps = () => {
 			<Buildings/>
 			<Pin/>
 			<MapControllers/>
+			<BasemapsSelectors/>
 		</Map>
-		<PanSelector setActivePan={setActivePan}/>
 		</div>
 	)
 }

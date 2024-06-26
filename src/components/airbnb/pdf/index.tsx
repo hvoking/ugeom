@@ -1,5 +1,4 @@
 // App Imports
-import { Page2 } from './page2';
 import { Page1 } from './page1';
 import './styles.scss';
 
@@ -29,7 +28,6 @@ export const UserPdf = () => {
 					tabIndex={0}
 				>
 					<Page1 page1Ref={page1Ref} setActivePdf={setActivePdf}/>	
-					<Page2 page2Ref={page2Ref} setActivePdf={setActivePdf}/>
 				</div>
 			}
 		</>

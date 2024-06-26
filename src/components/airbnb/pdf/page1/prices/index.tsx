@@ -7,7 +7,7 @@ import { usePrices } from '../../../context/filters/prices';
 // Third-party imports
 import * as d3 from 'd3';
 
-export const SellPrices = () => {
+export const Prices = () => {
 	const { samplesPrices } = usePrices();
 
 	const mean = (arr: any) => {
@@ -19,25 +19,27 @@ export const SellPrices = () => {
 	};
 
 	const siFormat = d3.format(",");
-
-
-	const valorAnuncio = samplesPrices && siFormat(mean(samplesPrices)).replaceAll(",", ".")
+	const meanValue = Math.round(mean(samplesPrices))
 
 	return (
-		<div className="sell-prices-wrapper">
-			<div>
-				<div className="sell-prices-title">
-					Mean price
-				</div>
-				<div className="sell-prices-subtitle">
-					calculated based on the samples
-				</div>
-				<div className="sell-prices-price">
-					{valorAnuncio} £
-				</div>
+		<div className="evaluation-wrapper">
+			<div style={{display: "flex", alignItems: "center", gap: "7px"}}>
+				<div>Optimal night stay price</div>
+				<div className="evaluation-value">{meanValue} £</div>
+			</div>
+			<div style={{display: "flex", gap: "5px"}}>
+				<div>Data source: </div>
+				<a 
+					href="https://insideairbnb.com/london/"
+					style={{display: "table-cell"}}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<div>Inside Airbnb</div>
+				</a>
 			</div>
 		</div>
 	)
 }
 
-SellPrices.displayName="SellPrices";
+Prices.displayName="Prices";

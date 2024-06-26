@@ -1,0 +1,31 @@
+.fixTableHead { 
+  overflow-y: scroll; 
+  text-align: center;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead{ 
+    position: sticky; 
+    top: 0; 
+    background-color: #f1f1f1;
+
+  } 
+  td {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  tr:hover {
+    background: #f1f1f1;
+  }
+  th { 
+    border-top: none;
+    border-bottom: none;
+    padding: 8px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  } 
+  td {
+      padding: 8px;
+      border-top: none;
+  }
+} 
