@@ -7,14 +7,10 @@ import './styles.scss';
 
 // Context imports
 import { usePdf } from '../context/filters/pdf';
-import { useLinesApi } from '../context/api/imoveis/lines';
-import { usePricesApi } from '../context/api/imoveis/prices';
 import { useReverseGeocodingApi } from '../context/api/google/reverse';
 
 
 export const UserPdf = () => {
-	const { linesData } = useLinesApi();
-	const { pricesData } = usePricesApi();
 	const { currentAddress } = useReverseGeocodingApi();
 
 	const { page1Ref, activePdf, setActivePdf } = usePdf();
@@ -29,8 +25,6 @@ export const UserPdf = () => {
 		let vh = window.innerHeight * 0.01;
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	});
-
-	if (!linesData || !pricesData) return <></>
 
 	return (<>
 			{activePdf && 
@@ -70,7 +64,7 @@ export const UserPdf = () => {
 				</div>
 				<PdfMaps/>
 				<Chat/>
-				<Table linesData={linesData} pricesData={pricesData}/>
+				<Table/>
 				<Prices/>
 			</div>
 		</div>
