@@ -17,13 +17,10 @@ export const PdfProvider = ({children}: any) => {
 	const [ activePdf, setActivePdf ] = useState(false);
 	
 	const page1Ref = useRef<any>(null);
-	const page2Ref = useRef<any>(null);
 
 	const printDocument = () => {
 		const page1 = page1Ref.current;
-		const page2 = page2Ref.current;
-
-		const pdf = new jsPDF('p', 'px','a4', true)
+		const pdf = new jsPDF('p', 'px','a4', true);
 		
 		html2canvas(page1, {scale: 2, useCORS: true}).then((canvasPage) => {
 			const componentWidth = page1.offsetWidth;
@@ -35,25 +32,14 @@ export const PdfProvider = ({children}: any) => {
 			pdf.internal.pageSize.height = componentHeight;
 
 			pdf.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-
+			pdf.save('download.pdf');
 			
-		}).then(() => {
-			html2canvas(page2, {scale: 2, useCORS: true}).then((canvasPage2) => {
-				const componentWidth = page2.offsetWidth
-				const componentHeight = page2.offsetHeight
-
-				const imgData = canvasPage2.toDataURL('image/png');
-
-				pdf.addPage([componentWidth, componentHeight]);
-				pdf.addImage(imgData, 'PNG', 0, 0, componentWidth, componentHeight);
-				pdf.save('download.pdf');
-			})
 		})
 	};
 
 	return (
 		<PdfContext.Provider value={{ 
-			page1Ref, page2Ref, 
+			page1Ref,
 			printDocument, 
 			activePdf, setActivePdf 
 		}}>
