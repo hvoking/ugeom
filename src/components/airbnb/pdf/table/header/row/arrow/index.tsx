@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 export const Arrow = ({ fill, item, setSortKey, setCurrentDirection }: any) => {
 	const [ up, setUp ] = useState(false);
 
-	const y1 = up ? "6" : "12";
-	const y2 = up ? "12" : "6";
+	const y1 = up ? "7" : "13";
+	const y2 = up ? "13" : "7";
 
 	const x = 5;
 

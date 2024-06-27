@@ -4,7 +4,6 @@ import { usePrices } from '../../../context/filters/prices';
 import { useDates } from '../../../context/filters/dates';
 import { useTooltip } from '../../../context/maps/tooltip';
 import { useLinesLimits } from '../../../context/limits/lines';
-import { useLinesApi } from '../../../context/api/imoveis/lines';
 import { usePricesApi } from '../../../context/api/imoveis/prices';
 
 // Third-party imports
@@ -16,7 +15,6 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 	const { startDate, finalDate } = useDates();
 	const { setPropertyInfo, setActivePropertyInfo } = useTooltip();
 	const { bottomLimit, topLimit } = useLinesLimits();
-	const { linesData } = useLinesApi();
 	const { pricesData } = usePricesApi();
 
 	const startDateParts = startDate.split("-");
@@ -59,6 +57,8 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 			{filterById.slice(0, nearest).map((item: any, index: any) => {
 				const distance = (Math.round(item.distance * 10000 * 10) / 10).toString().replace(".", ",");
 				const currentPrice = siFormat(Math.round(item.price)).replace(",", ".");
+				const rating = item.review_scores_rating;
+				const reviews = item.number_of_reviews;
 
 				return (
 					<tr key={index} onClick={(e: any) => onClick(e, item)}>
@@ -87,6 +87,8 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 						</td>
 						<td>{distance} m</td>
 						<td>{currentPrice} £</td>
+						<td>{rating}</td>
+						<td>{reviews}</td>
 					</tr>
 				)}
 			)}
