@@ -15,7 +15,7 @@ export const Prices = () => {
 	    return sum / filteredArr.length;
 	};
 
-	const meanValue = Math.round(mean(samplesPrices))
+	const meanValue = samplesPrices && Math.round(mean(samplesPrices))
 
 	return (
 		<div className="evaluation-wrapper">

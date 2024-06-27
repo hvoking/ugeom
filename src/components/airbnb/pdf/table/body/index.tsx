@@ -17,6 +17,8 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 	const { bottomLimit, topLimit } = useLinesLimits();
 	const { pricesData } = usePricesApi();
 
+	if (!pricesData) return <></>
+
 	const startDateParts = startDate.split("-");
 	const currentStartDate = new Date(`${startDateParts[2]}-${startDateParts[1]}-${startDateParts[0]}`);
 
