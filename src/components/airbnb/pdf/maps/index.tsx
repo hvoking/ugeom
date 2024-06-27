@@ -1,5 +1,5 @@
 // React imports
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 
 // App imports
 import { Pin } from './pin';
@@ -9,9 +9,9 @@ import { Buildings } from './buildings';
 import { BasemapsSelectors } from './basemaps';
 
 // Context imports
-import { useMapbox } from '../../../context/maps/mapbox';
-import { useGeo } from '../../../context/filters/geo';
-import { useIsoPolygonApi } from '../../../context/api/isoPolygon';
+import { useMapbox } from '../../context/maps/mapbox';
+import { useGeo } from '../../context/filters/geo';
+import { useIsoPolygonApi } from '../../context/api/isoPolygon';
 
 // Third-party imports
 import { Map } from 'react-map-gl';

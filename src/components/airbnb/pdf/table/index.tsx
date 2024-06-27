@@ -6,11 +6,11 @@ import { Header } from './header';
 import './styles.scss';
 
 // Context imports
-import { usePropertyType } from '../../../context/filters/property';
-import { usePrices } from '../../../context/filters/prices';
-import { useDates } from '../../../context/filters/dates';
-import { useTooltip } from '../../../context/maps/tooltip';
-import { useLinesLimits } from '../../../context/limits/lines';
+import { usePropertyType } from '../../context/filters/property';
+import { usePrices } from '../../context/filters/prices';
+import { useDates } from '../../context/filters/dates';
+import { useTooltip } from '../../context/maps/tooltip';
+import { useLinesLimits } from '../../context/limits/lines';
 
 // Third-party imports
 import * as d3 from 'd3';

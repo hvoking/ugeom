@@ -52,3 +52,9 @@
     display: block;
   }
 }
+.airbnb-pdf-body {
+  display: grid;
+  overflow: hidden;
+  position: relative;
+  grid-template-rows: min-content min-content 1fr min-content 1fr;
+}

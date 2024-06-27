@@ -2,10 +2,7 @@
 import './styles.scss';
 
 // Context imports
-import { usePrices } from '../../../context/filters/prices';
-
-// Third-party imports
-import * as d3 from 'd3';
+import { usePrices } from '../../context/filters/prices';
 
 export const Prices = () => {
 	const { samplesPrices } = usePrices();
@@ -18,7 +15,6 @@ export const Prices = () => {
 	    return sum / filteredArr.length;
 	};
 
-	const siFormat = d3.format(",");
 	const meanValue = Math.round(mean(samplesPrices))
 
 	return (

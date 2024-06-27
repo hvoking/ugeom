@@ -2,8 +2,8 @@
 import { Clustered } from './clustered'
 
 // Context imports
-import { useLinesLimits } from '../../../../context/limits/lines';
-import { usePointsLimits } from '../../../../context/limits/points';
+import { useLinesLimits } from '../../../context/limits/lines';
+import { usePointsLimits } from '../../../context/limits/points';
 
 export const PointsLayer = () => {
 	const { bottomLimit, topLimit } = useLinesLimits();
