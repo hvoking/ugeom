@@ -1,11 +1,15 @@
 // App imports
 import { Row } from './row';
 
-export const Header = ({ setSortKey, setCurrentDirection }: any) => {
+export const Header = ({ setSortKey, setCurrentDirection, setActiveSort }: any) => {
+
+	const onClick = () => {
+		setActiveSort(true);
+	}
 
 	return (
 		<thead> 
-			<tr>
+			<tr onClick={onClick}>
 				<th>#</th>
 				<th>Thumbnail</th>
 				<Row 

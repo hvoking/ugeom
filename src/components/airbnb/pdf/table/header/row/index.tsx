@@ -1,7 +1,7 @@
 // App imports
 import { Arrow } from './arrow';
 
-export const Row = ({ setSortKey, setCurrentDirection, title, item }: any) => {
+export const Row = ({ setSortKey, currentDirection, setCurrentDirection, title, item }: any) => {
 	return (
 		<th>
 			<div style={{position: "relative"}}>
