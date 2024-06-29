@@ -1,3 +1,6 @@
+// React imports
+import { useState } from 'react';
+
 // Context imports
 import { usePropertyType } from '../../../context/filters/property';
 import { usePrices } from '../../../context/filters/prices';
@@ -16,6 +19,7 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 	const { setPropertyInfo, setActivePropertyInfo } = useTooltip();
 	const { bottomLimit, topLimit } = useLinesLimits();
 	const { pricesData } = usePricesApi();
+	const [ validImages, setValidImages ] = useState<any>({});
 
 	if (!pricesData) return <></>
 
@@ -54,6 +58,15 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 	// }
 
 	// onClick={(e: any) => rejectId(e, item)}
+
+	const handleImageLoad = (id: any) => {
+	    setValidImages((prev: any) => ({ ...prev, [id]: true }));
+	  };
+
+	const handleImageError = (id: any) => {
+		setValidImages((prev: any) => ({ ...prev, [id]: false }));
+	};
+
 	return (
 		<tbody> 
 			{filterById.slice(0, nearest).map((item: any, index: any) => {
@@ -63,35 +76,41 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 				const reviews = item.number_of_reviews;
 
 				return (
-					<tr key={index} onClick={(e: any) => onClick(e, item)}>
-						<td>
-							<div 
-								style={{
-									backgroundColor: 
-										item['price'] < bottomLimit ? 
-										"rgba(255, 0, 0, 1)" :
-										item['price'] > topLimit ? 
-										"rgba(166, 166, 244, 1)" :
-										"rgba(67, 181, 64, 1)"
-								}}
-							>
-								{index + 1}
-							</div>
-						</td>
-						<td>
-							<img 
-								src={item.image_src}
-								alt="property"
-								width="55"
-								height="45"
-								loading="lazy"
-							/>
-						</td>
-						<td>{distance} m</td>
-						<td>{currentPrice} £</td>
-						<td>{rating}</td>
-						<td>{reviews}</td>
-					</tr>
+					<>
+						{validImages[item.property_id] !== false &&
+							<tr key={index} onClick={(e: any) => onClick(e, item)}>
+								<td>
+									<div 
+										style={{
+											backgroundColor: 
+												item['price'] < bottomLimit ? 
+												"rgba(255, 0, 0, 1)" :
+												item['price'] > topLimit ? 
+												"rgba(166, 166, 244, 1)" :
+												"rgba(67, 181, 64, 1)"
+										}}
+									>
+										{index + 1}
+									</div>
+								</td>
+								<td>
+									<img 
+										src={item.image_src}
+										alt="property"
+										width="55"
+										height="45"
+										loading="lazy"
+										onLoad={() => handleImageLoad(item.property_id)}
+										onError={() => handleImageError(item.property_id)}
+									/>
+								</td>
+								<td>{distance} m</td>
+								<td>{currentPrice} £</td>
+								<td>{rating}</td>
+								<td>{reviews}</td>
+							</tr>
+						}
+					</>
 				)}
 			)}
 		</tbody> 

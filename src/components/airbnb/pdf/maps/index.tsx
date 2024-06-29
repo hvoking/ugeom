@@ -6,6 +6,7 @@ import { Pin } from './pin';
 import { MapControllers } from './controllers';
 import { PointsLayer } from './points';
 import { Buildings } from './buildings';
+import { Boundary } from './boundary';
 import { BasemapsSelectors } from './basemaps';
 
 // Context imports
@@ -34,7 +35,7 @@ export const PdfMaps = () => {
 		<div style={{position: "relative"}}>
 		<Map
 			ref={pdfMapRef}
-			initialViewState={{...viewport, bearing: 0, pitch: 0}}
+			initialViewState={{...viewport, bearing: 0, pitch: 0, zoom: 12}}
 			mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN} 
 			mapStyle="mapbox://styles/mapbox/light-v10"
 			onDblClick={onDblClick}
@@ -42,6 +43,7 @@ export const PdfMaps = () => {
 			antialias={true}
 			preserveDrawingBuffer={true}
 		>
+			<Boundary/>
 			<PointsLayer/>
 			<Buildings/>
 			<Pin/>
