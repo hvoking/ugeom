@@ -12,7 +12,7 @@ import { usePricesApi } from '../../../context/api/imoveis/prices';
 // Third-party imports
 import * as d3 from 'd3';
 
-export const Body = ({ sortKey, currentDirection, activeSort }: any) => {
+export const Body = ({ sortKey, currentDirection }: any) => {
 	const { rejectedIds, setRejectedIds, setCurrentPropertyId, nearest } = usePropertyType();
 	const { leftPosition, rightPosition } = usePrices();
 	const { startDate, finalDate } = useDates();
@@ -41,11 +41,9 @@ export const Body = ({ sortKey, currentDirection, activeSort }: any) => {
 	
 	const filterById = filterByDates.filter((item: any) => !rejectedIds.includes(item.property_id));
 	
-	if (activeSort && sortKey) {
-		currentDirection === "up" ?
-		filterById.sort((a: any, b: any) => b[sortKey] - a[sortKey]) :
-		filterById.sort((a: any, b: any) => a[sortKey] - b[sortKey]);
-	}
+	currentDirection === "up" ?
+	filterById.sort((a: any, b: any) => b[sortKey] - a[sortKey]) :
+	filterById.sort((a: any, b: any) => a[sortKey] - b[sortKey]);
 
 	const onClick = (e: any, item: any) => {
 		setCurrentPropertyId(item.property_id);

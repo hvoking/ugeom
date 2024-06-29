@@ -7,9 +7,8 @@ import { Header } from './header';
 import './styles.scss';
 
 export const Table = () => {
-	const [ sortKey, setSortKey ] = useState<any>(null);
-	const [ currentDirection, setCurrentDirection ] = useState<any>(null);
-	const [ activeSort, setActiveSort ] = useState(false);
+	const [ sortKey, setSortKey ] = useState("distance");
+	const [ currentDirection, setCurrentDirection ] = useState("up");
 
 	return (
 		<div className="fixTableHead"> 
@@ -17,9 +16,11 @@ export const Table = () => {
 				<Header 
 					setSortKey={setSortKey} 
 					setCurrentDirection={setCurrentDirection} 
-					setActiveSort={setActiveSort}
 				/>
-				<Body sortKey={sortKey} currentDirection={currentDirection} activeSort={activeSort}/>
+				<Body 
+					sortKey={sortKey} 
+					currentDirection={currentDirection}
+				/>
 			</table>
 		</div>
 	)

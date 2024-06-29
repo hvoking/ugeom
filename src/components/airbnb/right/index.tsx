@@ -37,7 +37,9 @@ export const Right = () => {
   		return currentStartDate < new Date(d.start_date) && new Date(d.start_date) < currentFinalDate
   	});
 
-	const filterById = filterPoints && filterPoints.filter((item: any) => !rejectedIds.includes(item.property_id))
+	const filterById = filterPoints && filterPoints.filter((item: any) => !rejectedIds.includes(item.property_id));
+
+	filterById && filterById.sort((a: any, b: any) => a["distance"] - b["distance"])
 
 	useEffect(() => {
 		filterById && setSamplesPrices(filterById.slice(0, nearest).map((item: any) => item['price']));
