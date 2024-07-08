@@ -3,11 +3,11 @@ import { Clustered } from './clustered'
 
 // Context imports
 import { useLinesLimits } from '../../../context/limits/lines';
-import { usePointsLimits } from '../../../context/limits/points';
+import { usePricesLimits } from '../../../context/limits/prices';
 
 export const PointsLayer = () => {
 	const { bottomLimit, topLimit } = useLinesLimits();
-	const { filterPoints } = usePointsLimits();
+	const { filterPoints } = usePricesLimits();
 
 	if (!filterPoints) return <></>
 
