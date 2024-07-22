@@ -1,6 +1,8 @@
 export const Legend = ({ innerHeight, xScale, currentPosition }: any) => {
 	const legendWidth = 16;
 
+	if (currentPosition === undefined) return <></>
+
 	return (
 		<>
 		<polygon 

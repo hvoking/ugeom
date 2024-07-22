@@ -58,6 +58,7 @@ export const Right = () => {
 					const currentImage = item.image_src && item.image_src;
 					return (
 						<Body 
+							key={index}
 							item={item} 
 							setRejectedIds={setRejectedIds} 
 							setCurrentPropertyId={setCurrentPropertyId}

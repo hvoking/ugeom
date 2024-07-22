@@ -74,43 +74,39 @@ export const Body = ({ sortKey, currentDirection }: any) => {
 				const currentPrice = siFormat(Math.round(item.price)).replace(",", ".");
 				const rating = item.review_scores_rating;
 				const reviews = item.number_of_reviews;
-
+				if (validImages[item.property_id] === false) return <></>
 				return (
-					<>
-						{validImages[item.property_id] !== false &&
-							<tr key={index} onClick={(e: any) => onClick(e, item)}>
-								<td>
-									<div 
-										style={{
-											backgroundColor: 
-												item['price'] < bottomLimit ? 
-												"rgba(255, 0, 0, 1)" :
-												item['price'] > topLimit ? 
-												"rgba(166, 166, 244, 1)" :
-												"rgba(67, 181, 64, 1)"
-										}}
-									>
-										{index + 1}
-									</div>
-								</td>
-								<td>
-									<img 
-										src={item.image_src}
-										alt="property"
-										width="55"
-										height="45"
-										loading="lazy"
-										onLoad={() => handleImageLoad(item.property_id)}
-										onError={() => handleImageError(item.property_id)}
-									/>
-								</td>
-								<td>{distance} m</td>
-								<td>{currentPrice} £</td>
-								<td>{rating}</td>
-								<td>{reviews}</td>
-							</tr>
-						}
-					</>
+					<tr key={index} onClick={(e: any) => onClick(e, item)}>
+						<td>
+							<div 
+								style={{
+									backgroundColor: 
+										item['price'] < bottomLimit ? 
+										"rgba(255, 0, 0, 1)" :
+										item['price'] > topLimit ? 
+										"rgba(166, 166, 244, 1)" :
+										"rgba(67, 181, 64, 1)"
+								}}
+							>
+								{index + 1}
+							</div>
+						</td>
+						<td>
+							<img 
+								src={item.image_src}
+								alt="property"
+								width="55"
+								height="45"
+								loading="lazy"
+								onLoad={() => handleImageLoad(item.property_id)}
+								onError={() => handleImageError(item.property_id)}
+							/>
+						</td>
+						<td>{distance} m</td>
+						<td>{currentPrice} £</td>
+						<td>{rating}</td>
+						<td>{reviews}</td>
+					</tr>
 				)}
 			)}
 		</tbody> 

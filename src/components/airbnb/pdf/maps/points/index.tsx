@@ -7,9 +7,9 @@ import { usePricesLimits } from '../../../context/limits/prices';
 
 export const PointsLayer = () => {
 	const { bottomLimit, topLimit } = useLinesLimits();
-	const { filterPoints } = usePricesLimits();
-
-	if (!filterPoints) return <></>
+	const { filterPrices } = usePricesLimits();
+	
+	if (!filterPrices) return <></>
 
 	const colors: any = {
 		"high": 'rgba(166, 166, 244, 1)',
@@ -17,7 +17,7 @@ export const PointsLayer = () => {
 		"min":  'rgba(255, 0, 0, 1)'
 	}
 
-	const classifiedPoints: any = filterPoints.reduce((total: any, item: any) => {
+	const classifiedPoints: any = filterPrices.reduce((total: any, item: any) => {
 		if (item.price >= topLimit) {
 	        total.high.push(item);
 	    } else if (item.price < bottomLimit) {
