@@ -10,8 +10,7 @@ export const Logo = () => {
 				alt="header-logo"
 			/>
 			<div>
-				<div className="logo-name">Gustavo Gonzalez</div>
-				<div className="logo-profession">Computational Designer</div>
+				<div className="logo-name">Urban Geometries</div>
 			</div>
 		</div>
 	)
