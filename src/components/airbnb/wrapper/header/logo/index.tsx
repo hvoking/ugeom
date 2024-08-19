@@ -6,7 +6,9 @@ export const Logo = () => {
 				src="static/logos/pink.svg" 
 				alt="header-logo"
 			/>
-			<div className="logo-name" style={{paddingLeft: "8px"}}>Airbnb Metrics</div>
+			<div className="logo-name" style={{paddingLeft: "8px"}}>
+				Urban Geometries
+			</div>
 		</div>
 	)
 }

@@ -10,7 +10,7 @@ export const Logo = () => {
 				alt="header-logo"
 			/>
 			<div>
-				<div className="logo-name">Urban Geometries</div>
+				<div className="logo-name">URBAN GEOMETRIES</div>
 			</div>
 		</div>
 	)
