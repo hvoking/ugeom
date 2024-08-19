@@ -7,7 +7,7 @@ export const Logo = () => {
 				alt="header-logo"
 			/>
 			<div className="logo-name" style={{paddingLeft: "8px"}}>
-				Urban Geometries
+				URBAN GEOMETRIES
 			</div>
 		</div>
 	)
