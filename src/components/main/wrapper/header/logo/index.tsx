@@ -9,7 +9,7 @@ export const Logo = () => {
 				src="static/logos/white.svg" 
 				alt="header-logo"
 			/>
-			<div className="logo-name">URBAN GEOMETRIES</div>
+			<div className="logo-name">Urban Geometries</div>
 		</div>
 	)
 }
