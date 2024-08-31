@@ -4,17 +4,11 @@
 	cursor: pointer;
 	color: rgba(255, 255, 255, 1);
 	white-space: nowrap;
+	gap: 10px;
 }
 .logo {
-	height: 40px;
-	padding-right: 7px;
+	height: 45px;
 }
 .logo-name {
 	font-size: 1.4em; 
-	letter-spacing: 1.1px;
-	transform: translateX(-2px);
-}
-.logo-profession {
-	 font-size: 0.7em;
-	 letter-spacing: 3.6px;
 }

@@ -3,10 +3,10 @@ export const Logo = () => {
 		<div className="logo-wrapper">
 			<img 
 				className="logo"
-				src="static/logos/pink.svg" 
+				src="static/logos/white.svg" 
 				alt="header-logo"
 			/>
-			<div className="logo-name" style={{paddingLeft: "8px"}}>
+			<div className="logo-name">
 				URBAN GEOMETRIES
 			</div>
 		</div>
