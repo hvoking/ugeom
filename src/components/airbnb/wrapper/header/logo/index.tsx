@@ -7,7 +7,7 @@ export const Logo = () => {
 				alt="header-logo"
 			/>
 			<div className="logo-name">
-				URBAN GEOMETRIES
+				GEOROOTS
 			</div>
 		</div>
 	)
