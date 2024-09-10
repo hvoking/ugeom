@@ -6,7 +6,7 @@ export const Suggestions = ({ suggestions, onClick }: any) => {
 					return (
 						<li key={index} onClick={() => onClick(suggestion)}>
 							<img 
-								style={{height: "20px", width: "100%"}} 
+								style={{height: "20px"}} 
 								src={suggestions[suggestion].replace("-active", "")} 
 								alt={suggestion}
 							/>

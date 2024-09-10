@@ -1,14 +1,14 @@
 .dropdown-wrapper {
   white-space: nowrap;
   position: relative;
-  width: 60px;
+  width: 80px;
   height: 20px;
   cursor: pointer;
   background-color: rgba(23, 23, 34, 1);
   border-radius: 5px;
   border: 2px solid rgba(126, 126, 132, 1);
   color: rgba(255, 255, 255, 1);
-  z-index: 4;
+  z-index: 6;
   font-size: 0.8em;
 }
 .dropdown-header {

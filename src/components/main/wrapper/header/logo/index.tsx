@@ -10,7 +10,7 @@ export const Logo = () => {
 				alt="header-logo"
 			/>
 			<div className="logo-name">
-				Geomotion Labs
+				Spatial Fingers
 			</div>
 		</div>
 	)

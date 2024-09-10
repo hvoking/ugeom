@@ -1,11 +1,11 @@
 // App imports
-import { UgeomRoutes } from './routes';
+import { Main } from './components/main';
 import './styles.scss';
 
 export const App = () => {
   return (
     <div className="App">
-        <UgeomRoutes/>
+        <Main/>
     </div>
   );
 }

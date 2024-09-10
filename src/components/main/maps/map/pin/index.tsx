@@ -5,12 +5,14 @@ import { useCallback } from 'react';
 import './styles.scss';
 
 // Context imports
-import { useGeo } from '../../../context/filters/geo';
+import { useGeo } from '../../../../context/filters/geo';
+import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
 
 // Third-party imports
 import { Marker } from 'react-map-gl';
 
 export const Pin = () => {
+	const { initialMarker, setInitialMarker } = useIsoPolygonApi();
 	const { marker, setMarker, setPlaceCoordinates } = useGeo();
 
 	const onMarkerDrag = useCallback((event: any) => {
@@ -21,6 +23,7 @@ export const Pin = () => {
 	}, []);
 
 	const onMarkerDragEnd = useCallback((event: any) => {
+		setInitialMarker(false);
 		setPlaceCoordinates({
 			longitude: event.lngLat.lng,
 			latitude: event.lngLat.lat
@@ -43,6 +46,11 @@ export const Pin = () => {
 			      alt="marker"
 		     />
 		    </Marker>
+		    {initialMarker && 
+				<div className="initial-marker-text">
+					Drag the marker or search for a place
+				</div>
+			}
 		</>
 	)
 }

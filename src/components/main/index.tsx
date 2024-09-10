@@ -1,24 +1,23 @@
 // App imports
-import { Left } from './left';
-import { Maps } from './maps';
-import { Right } from './right';
 import { Wrapper } from './wrapper';
+import { Left } from './left';
+import { Right } from './right';
+import { Mobile } from './mobile';
+import { Maps } from './maps';
+import { UserPdf } from './pdf';
 import './styles.scss';
-
-// Context imports
-import { MainProvider } from './context';
 
 export const Main = () => {
 	return (
-		<MainProvider>
-			<Wrapper>
-				<div className="business-main-wrapper">
-					<Left/>
-					<Maps/>
-					<Right/>
-				</div>
-			</Wrapper>
-		</MainProvider>
+		<Wrapper>
+			<div className="main-wrapper">
+				<Left/>
+				<Maps/>
+				<Right/>
+				<Mobile/>
+			</div>
+			<UserPdf/>
+		</Wrapper>
 	)
 }
 

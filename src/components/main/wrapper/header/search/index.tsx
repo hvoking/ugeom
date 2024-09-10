@@ -6,18 +6,20 @@ import { Suggestions } from './suggestions';
 import './styles.scss';
 
 // Context imports
-import { useGoogleSearchApi } from '../../../context/api/google/search';
-import { useGeo } from '../../../context/filters/geo';
+import { useGoogleSearchApi } from '../../../../context/api/google/search';
+import { usePdf } from '../../../../context/filters/pdf';
+import { useGeo } from '../../../../context/filters/geo';
 
 export const Search = ({ activeSearch, setActiveSearch }: any) => {
 	const { setPlaceId } = useGeo();
-	const { searchData, searchText, setSearchText } = useGoogleSearchApi();
+	const { setActivePdf } = usePdf();
+	const { googleSearchData, searchText, setSearchText } = useGoogleSearchApi();
 
 	const [ suggestionIndex, setSuggestionIndex ] = useState(0);
 	const [ suggestionsActive, setSuggestionsActive ]= useState(false);
 	const inputRef = useRef<any>(null);
 
-	const suggestions = searchData && searchData.predictions.reduce((total: any, item: any) => {
+	const suggestions = googleSearchData && googleSearchData.predictions.reduce((total: any, item: any) => {
 		const placeName = item.description.toLowerCase()
 		total.push(placeName)
 		return total
@@ -38,7 +40,7 @@ export const Search = ({ activeSearch, setActiveSearch }: any) => {
 	const handleClick = (e: any) => {
 		const currentSearchValue = e.target.innerText.trim();
 
-		searchData && searchData.predictions.forEach((item: any) => {
+		googleSearchData && googleSearchData.predictions.forEach((item: any) => {
 			const placeName = item.description.toLowerCase().trim();
 			if (placeName === currentSearchValue) {
 				setPlaceId(item.place_id);
@@ -68,7 +70,7 @@ export const Search = ({ activeSearch, setActiveSearch }: any) => {
 		else if (e.keyCode === 13) {
 			const currentSearchValue: any = suggestions && suggestions[suggestionIndex]
 
-			searchData && searchData.predictions.forEach((item: any) => {
+			googleSearchData && googleSearchData.predictions.forEach((item: any) => {
 				const placeName = item.description.toLowerCase().trim();
 				if (placeName === currentSearchValue) {
 					setPlaceId(item.place_id);
@@ -97,7 +99,7 @@ export const Search = ({ activeSearch, setActiveSearch }: any) => {
 	return (
 		<div className="auto-complete">
 			<img 
-				className="header-search-icon"
+				className="airbnb-search-icon"
 				src="static/components/search/search_icon.svg" 
 				alt="search-icon"
 				onClick={() => setActiveSearch((prev: boolean) => !prev)}
@@ -107,18 +109,19 @@ export const Search = ({ activeSearch, setActiveSearch }: any) => {
 					<input 
 						className="maps-input"
 						type="text" 
-						placeholder="pesquise um lugar..."
+						placeholder="search for a place..."
 						value={searchText}
 						onChange={handleChange}
 						onKeyDown={handleKeyDown}
 						spellCheck={false}
 						ref={inputRef}
+						onFocus={() => setActivePdf(false)}
 					/>
 					<div className="cancel-cross-wrapper">
 						<img
 							className="cancel-cross"
 							src="static/components/search/cancel_search.svg" 
-							alt="cancel-cross"
+							alt="search-icon"
 							onClick={cleanSuggestions}
 						/>
 					</div>
