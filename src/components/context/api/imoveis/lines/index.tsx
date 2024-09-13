@@ -7,7 +7,6 @@ import { datesFormat } from '../../../../utils/constants';
 // Context imports
 import { usePolygonApi } from '../../polygon';
 import { usePropertyType } from '../../../filters/property';
-import { useEquipment } from '../../../filters/equipment';
 import { useDates } from '../../../filters/dates';
 
 const LinesApiContext: React.Context<any> = createContext(null)
@@ -21,7 +20,6 @@ export const useLinesApi = () => {
 export const LinesApiProvider = ({children}: any) => {
 	const { polygonData } = usePolygonApi();
 	const { nearest } = usePropertyType();
-	const { rooms } = useEquipment();
 	const { dates } = useDates();
 
 	const [ linesData, setLinesData ] = useState<any>(null);
@@ -41,7 +39,7 @@ export const LinesApiProvider = ({children}: any) => {
 			setLinesData(receivedData[0]);
 		}
 		polygonData && fetchData();
-	}, [ polygonData, rooms, nearest, dates ]);
+	}, [ polygonData, nearest, dates ]);
 
 	return (
 		<LinesApiContext.Provider value={{ linesData }}>
