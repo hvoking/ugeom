@@ -1,4 +1,3 @@
-// React imports
 import { useState } from 'react';
 
 // App imports
@@ -10,9 +9,9 @@ import './styles.scss';
 
 export const Header = () => {
 	const [ activeSearch, setActiveSearch ] = useState(false);
-	
+
 	return (
-		<div className="m2b-header">
+		<div className="main-header">
 			<div className="normal-header">
 				<Logo/>
 			</div>

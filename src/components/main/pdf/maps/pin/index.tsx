@@ -1,9 +1,6 @@
 // React imports
 import { useCallback } from 'react';
 
-// App imports
-import './styles.scss';
-
 // Context imports
 import { useGeo } from '../../../../context/filters/geo';
 import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
@@ -48,7 +45,7 @@ export const Pin = () => {
 		    </Marker>
 		    {initialMarker && 
 				<div className="initial-marker-text">
-					Arraste o marcador ou pesquise um lugar
+					Drag the pin
 				</div>
 			}
 		</>
