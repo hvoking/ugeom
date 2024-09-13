@@ -1,46 +1,34 @@
-.left-wrapper {
-	color: rgba(255, 255, 255, 1);
-}
-.explorer {
-	height: 100%;
-	display: grid;
-}
-.business-title {
-	padding-left: 20px;
-	font-weight: 500;
-  	font-size: 1.6em;
-}
-.numbers-wrapper {
-	background-color: rgba(33, 33, 43, 1);
-	border-radius: 20px;
-	display: grid;
-	grid-template-rows: min-content min-content min-content min-content;
-	position: relative;
+.left {
 	overflow: hidden;
 }
-.numbers {
-	padding: 8px;
-	padding-left: 20px;
-}
-.numbers-title {
-	font-weight: 500;
-	padding-bottom: 2px;
-}
-.numbers-subtitle {
-	font-size: 0.8em;
-}
-.explorer-info-wrapper {
+.airbnb-sidebar-items {
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr;
+	grid-gap: 5px;
+	overflow: hidden;
+	color: rgba(255, 255, 255, 1);
 }
-.geojson-wrapper {
-	position: absolute;
-	width: 100%;
+.sidebar-item-wrapper {
+	display: grid;
+	background-color: rgba(33, 33, 43, 1);
+	border-radius: 20px;
+	overflow: hidden;
+}
+.right-item-wrapper {
+	display: grid;
+	grid-template-rows: 30px auto;
+	background-color: rgba(33, 33, 43, 1);
+	border-radius: 20px;
+	overflow: hidden;
+}
+.sidebar-sub-title {
+
+	padding: 5px;
+  padding-left: 20px;
+  font-weight: 500;
+}
+.airbnb-message-wrapper {
+	display: grid; 
 	height: 100%;
-}
-@media screen and (max-width: 1000px) {
-	.left-wrapper {
-		display: none;
-	}
-	
+	grid-gap: 10px;
 }

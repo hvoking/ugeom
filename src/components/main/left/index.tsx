@@ -1,38 +1,34 @@
 // App imports
-import { IsoPolygonSVG } from './isoPolygon';
+import { Prices } from './prices';
+import { Timeseries } from './timeseries';
+import { SvgMap } from './svgMap';
+import { UserMessage } from '../../utils/message';
 import './styles.scss';
 
 // Context imports
-import { usePolygonApi } from '../context/api/polygon';
-import { useGeo } from '../context/filters/geo';
+import { useIsoPolygonApi } from '../../context/api/isoPolygon';
+import { useLinesApi } from '../../context/api/imoveis/lines';
+import { usePricesApi } from '../../context/api/imoveis/prices';
 
 export const Left = () => {
-	const { polygonData } = usePolygonApi();
-	const { cityName } = useGeo();
-	const isochroneArea = polygonData && Math.round((polygonData[0].polygon_area / 1000) * 100) / 100;
+	const { initialMarker } = useIsoPolygonApi();
+	const { linesData } = useLinesApi();
+	const { pricesData } = usePricesApi();
 
 	return (
-		<div className="left-wrapper">
-			<div className="explorer">
-				<div className="numbers-wrapper">
-					{isochroneArea && 
-						<>
-							<div className="explorer-info-wrapper">
-								<div className="numbers">
-									<div className="numbers-title">Study Area</div>
-									<div className="numbers-subtitle">City of {cityName}</div>
-								</div>
-								<div className="numbers">
-									<div className="numbers-title">Isochrone Area</div>
-									<div className="numbers-subtitle">{isochroneArea ? isochroneArea : "0.0"} km²</div>
-								</div>
-							</div>
-							<div className="geojson-wrapper">
-								<IsoPolygonSVG/>
-							</div>
-						</>
-					}
-				</div>
+		<div className="left">
+			<div className="airbnb-message-wrapper">
+				{!initialMarker && linesData && pricesData ?
+					<div className="airbnb-sidebar-items">
+						<SvgMap/>
+						<Prices 
+							linesData={linesData} 
+							pricesData={pricesData}
+						/>
+						<Timeseries/>
+					</div> :
+					<UserMessage/>
+				}
 			</div>
 		</div>
 	)

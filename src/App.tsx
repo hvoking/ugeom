@@ -1,11 +1,11 @@
 // App imports
-import { Business } from './components';
+import { Main } from './components/main';
 import './styles.scss';
 
 export const App = () => {
   return (
     <div className="App">
-        <Business/>
+        <Main/>
     </div>
   );
 }

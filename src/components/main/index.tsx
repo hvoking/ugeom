@@ -1,16 +1,23 @@
 // App imports
+import { Wrapper } from './wrapper';
 import { Left } from './left';
-import { Maps } from './maps';
 import { Right } from './right';
+import { Mobile } from './mobile';
+import { Maps } from './maps';
+import { UserPdf } from './pdf';
 import './styles.scss';
 
 export const Main = () => {
 	return (
-		<div className="business-main-wrapper">
-			<Left/>
-			<Maps/>
-			<Right/>
-		</div>
+		<Wrapper>
+			<div className="main-wrapper">
+				<Left/>
+				<Maps/>
+				<Right/>
+				<Mobile/>
+			</div>
+			<UserPdf/>
+		</Wrapper>
 	)
 }
 
