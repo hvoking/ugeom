@@ -3,6 +3,7 @@ import { useHexagonsApi } from '../../../../context/api/hexagons';
 import { useLinesLimits } from '../../../../context/limits/lines';
 import { usePrices } from '../../../../context/filters/prices';
 import { useDates } from '../../../../context/filters/dates';
+import { useEquipment } from '../../../../context/filters/equipment';
 
 // Third-party imports
 import * as d3 from 'd3';
@@ -12,6 +13,7 @@ export const Hexagons = ({ path }: any) => {
 	const { hexagonsData } = useHexagonsApi();
 	const { bottomLimit, topLimit } = useLinesLimits();
 	const { startDate, finalDate } = useDates();
+	const { rooms } = useEquipment();
 
 	const startDateParts = startDate.split("-");
 	const currentStartDate = new Date(`${startDateParts[2]}-${startDateParts[1]}-${startDateParts[0]}`);
@@ -19,16 +21,22 @@ export const Hexagons = ({ path }: any) => {
 	const finalDateParts = finalDate.split("-");
 	const currentFinalDate = new Date(`${finalDateParts[2]}-${finalDateParts[1]}-${finalDateParts[0]}`);
 
-	const hexagonAvg: any = (properties: any) => {
-		const filterPointByDates: any = properties.filter((item: any) => 
-			leftPosition < item['price'] &&
-			item['price'] < rightPosition &&
-			currentStartDate < new Date(item.first_review) 
-			&& new Date(item.first_review) < currentFinalDate)
-		const prices = filterPointByDates.map((item: any) => item.price);
-		const avg = d3.mean(prices);
-		return avg
-	}
+	const hexagonAvg: any = (properties: any[]): number | undefined => {
+	  const startDate = new Date(currentStartDate);
+	  const endDate = new Date(currentFinalDate);
+
+	  const filteredProperties = properties.filter(item => 
+	    item.price > leftPosition &&
+	    item.price < rightPosition &&
+	    new Date(item.first_review) >= startDate &&
+	    new Date(item.first_review) <= endDate &&
+	    (!rooms || item.rooms === rooms)
+	  );
+
+	  const prices = filteredProperties.map(item => item.price);
+	  return d3.mean(prices);
+	};
+
 	const maxLength: any = hexagonsData && d3.max(hexagonsData.map((item: any) => item.properties.length));
 
 	const opacityScale = hexagonsData && d3.scaleLinear()

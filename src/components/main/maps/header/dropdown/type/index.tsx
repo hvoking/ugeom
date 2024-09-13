@@ -9,13 +9,17 @@ export const FiltersDropdown = ( { imoveisDict, propertyName, setPropertyTypeId 
 	const [ suggestionsActive, setSuggestionsActive ] = useState(false);
 	
 	const onClick = (e: any) => {
-		const currentValue = e.target.innerText;	
+		const currentValue = e.target.innerText;
+		if (currentValue === "show all") {
+			setPropertyTypeId(null)
+		}
+		else {
+			const key: any = 
+				Object.keys(imoveisDict)
+				.find(k => imoveisDict[k] === currentValue);
 
-		const key: any = 
-			Object.keys(imoveisDict)
-			.find(k => imoveisDict[k] === currentValue);
-
-		setPropertyTypeId(parseInt(key))
+			setPropertyTypeId(parseInt(key))
+		}
 	}
 
 	return (

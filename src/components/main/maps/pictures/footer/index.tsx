@@ -7,7 +7,7 @@ export const ImagesFooter = ({propertyInfo}: any) => {
 	return (
 		<div className="pictures-footer">
 			<div className="pictures-footer-item">
-				<img width="30px" height="20px" src="static/components/symbols/bed.svg" alt="bed"/>
+				<img width="30px" height="20px" src={process.env.PUBLIC_URL + "static/components/maps/bed.svg"} alt="bed"/>
 				<div>{rooms} {rooms === 1 ? 'room' : 'rooms'}</div>
 			</div>
 		</div>

@@ -10,7 +10,7 @@ export const useEquipment = () => {
 }
 
 export const EquipmentProvider = ({children}: any) => {
-	const [ rooms, setRooms ] = useState<number | null>(null);
+	const [ rooms, setRooms ] = useState<any>(null);
 	
 	return (
 		<EquipmentContext.Provider value={{

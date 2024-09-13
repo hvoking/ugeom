@@ -31,8 +31,7 @@ export const LinesApiProvider = ({children}: any) => {
 		  	const tempUrl = `
 		    	${process.env.REACT_APP_API_URL}/
 		    	airbnb_lines_api
-		    	?rooms=${rooms}
-		    	&start_date=${datesFormat(dates[0])}
+		    	?start_date=${datesFormat(dates[0])}
 		    	&final_date=${datesFormat(dates[1])}
 		    	&k=${nearest}
 		    `
