@@ -1,11 +1,11 @@
 // Context imports
-import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../../../context/api/isochrone';
 
 // Third party imports
 import { Source, Layer } from 'react-map-gl';
 
 export const Boundary = () => {
-	const { isoPolygonData } = useIsoPolygonApi();
+	const { isochroneData } = useIsochroneApi();
 
 	const polygonLayer: any = {
 	    id: 'polygonLayer',
@@ -26,9 +26,10 @@ export const Boundary = () => {
 	          type: 'Feature',
 	          geometry: {
 	            type: 'Polygon',
-	            coordinates: isoPolygonData ? 
-	            isoPolygonData.features[0].geometry.coordinates
-	            : [],
+	            coordinates: 
+	            	isochroneData ? 
+	           		isochroneData.features[0].geometry.coordinates
+	            	: [],
 	          },
 	        },
 	      ],

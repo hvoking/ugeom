@@ -3,13 +3,13 @@ import { useCallback } from 'react';
 
 // Context imports
 import { useGeo } from '../../../../context/filters/geo';
-import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../../../context/api/isochrone';
 
 // Third-party imports
 import { Marker } from 'react-map-gl';
 
 export const Pin = () => {
-	const { initialMarker, setInitialMarker } = useIsoPolygonApi();
+	const { initialMarker, setInitialMarker } = useIsochroneApi();
 	const { marker, setMarker, setPlaceCoordinates } = useGeo();
 
 	const onMarkerDrag = useCallback((event: any) => {

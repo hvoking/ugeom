@@ -6,12 +6,12 @@ import { UserMessage } from '../../utils/message';
 import './styles.scss';
 
 // Context imports
-import { useIsoPolygonApi } from '../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../context/api/isochrone';
 import { useLinesApi } from '../../context/api/imoveis/lines';
 import { usePricesApi } from '../../context/api/imoveis/prices';
 
 export const Left = () => {
-	const { initialMarker } = useIsoPolygonApi();
+	const { initialMarker } = useIsochroneApi();
 	const { linesData } = useLinesApi();
 	const { pricesData } = usePricesApi();
 

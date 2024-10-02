@@ -4,21 +4,22 @@ import { useState, useEffect, useContext, createContext } from 'react';
 // Context imports
 import { useGeo } from '../../filters/geo';
 
-const IsoPolygonApiContext: React.Context<any> = createContext(null)
+const IsochroneApiContext: React.Context<any> = createContext(null)
 
-export const useIsoPolygonApi = () => {
+export const useIsochroneApi = () => {
 	return (
-		useContext(IsoPolygonApiContext)
+		useContext(IsochroneApiContext)
 	)
 }
 
-export const IsoPolygonApiProvider = ({children}: any) => {
+export const IsochroneApiProvider = ({children}: any) => {
 	const { placeCoordinates } = useGeo();
 
 	const [ routingProfile, setRoutingProfile ] = useState("walking");
 	const [ contoursMinutes, setContoursMinutes ] = useState(30);
 	const [ initialMarker, setInitialMarker ] = useState(true);
-	const [ isoPolygonData, setIsoPolygonData ] = useState<any>(null);
+	
+	const [ isochroneData, setIsochroneData ] = useState<any>(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -35,21 +36,21 @@ export const IsoPolygonApiProvider = ({children}: any) => {
 		    const url = tempUrl.replace(/\s/g, '');
 		    const res = await fetch(url);
 		    const receivedData = await res.json();
-		    setIsoPolygonData(receivedData);
+		    setIsochroneData(receivedData);
 		}
 		!initialMarker && fetchData();
 	}, [ initialMarker, placeCoordinates, routingProfile, contoursMinutes ]);
 
 	return (
-		<IsoPolygonApiContext.Provider value={{ 
+		<IsochroneApiContext.Provider value={{ 
 			initialMarker, setInitialMarker,
-			isoPolygonData,
+			isochroneData,
 			routingProfile, setRoutingProfile,
 			contoursMinutes, setContoursMinutes,
 		}}>
 			{children}
-		</IsoPolygonApiContext.Provider>
+		</IsochroneApiContext.Provider>
 	)
 }
 
-IsoPolygonApiContext.displayName = "IsoPolygonApiContext";
+IsochroneApiContext.displayName = "IsochroneApiContext";

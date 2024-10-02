@@ -2,8 +2,8 @@
 import { useState, useEffect, useContext, createContext } from 'react';
 
 // Context imports
-import { useGeo } from '../../../../context/filters/geo';
-import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
+import { useGeo } from '../../../filters/geo';
+import { useIsochroneApi } from '../../isochrone';
 
 const GoogleDetailsApiContext: React.Context<any> = createContext(null)
 
@@ -15,7 +15,8 @@ export const useGoogleDetailsApi = () => {
 
 export const GoogleDetailsApiProvider = ({children}: any) => {
 	const { placeId, setPlaceCoordinates } = useGeo();
-	const { setInitialMarker } = useIsoPolygonApi();
+	const { setInitialMarker } = useIsochroneApi();
+	
 	const [ googleDetailsData, setGoogleDetailsData ] = useState<any>(null);
 	
 	useEffect(() => {
@@ -35,12 +36,8 @@ export const GoogleDetailsApiProvider = ({children}: any) => {
 
 	useEffect(() => {
 		if (googleDetailsData) {
-			const addressComponents = googleDetailsData.result.address_components;
-
-			const longitude = googleDetailsData.result.geometry.location.lng;
-			const latitude = googleDetailsData.result.geometry.location.lat;
-			const coordinates = {longitude: longitude, latitude: latitude};
-			setPlaceCoordinates(coordinates);
+			const { lng, lat } = googleDetailsData.result.geometry.location;
+			setPlaceCoordinates({longitude: lng, latitude: lat});
 			setInitialMarker(false);
 		}
 	}, [ googleDetailsData ])

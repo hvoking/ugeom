@@ -5,10 +5,10 @@ import { useEquipment } from '../../../../context/filters/equipment';
 import './styles.scss';
 
 // Context imports
-import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../../../context/api/isochrone';
 
 export const Dropdown = () => {
-	const { routingProfile, setRoutingProfile, contoursMinutes, setContoursMinutes } = useIsoPolygonApi();
+	const { routingProfile, setRoutingProfile, contoursMinutes, setContoursMinutes } = useIsochroneApi();
 	const { rooms, setRooms } = useEquipment();
 
 	const transportListOfValues: any = {

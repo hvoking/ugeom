@@ -10,7 +10,7 @@ import './styles.scss';
 
 // Context imports
 import { usePolygonApi } from '../../../context/api/polygon';
-import { useIsoPolygonApi } from '../../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../../context/api/isochrone';
 import { useSvgMapSizes } from '../../../context/sizes/svgMap';
 import { useGeo } from '../../../context/filters/geo';
 import { useReverseGeocodingApi } from '../../../context/api/google/reverse';
@@ -23,12 +23,12 @@ export const SvgMap = () => {
 	const [ currentTransform, setCurrentTransform ] = useState<any>(null);
 
 	const { polygonData } = usePolygonApi();
-	const { isoPolygonData } = useIsoPolygonApi();
+	const { isochroneData } = useIsochroneApi();
 	const { innerWidth, innerHeight } = useSvgMapSizes();
 	const { placeCoordinates, setPlaceCoordinates } = useGeo();
 	const { currentAddress } = useReverseGeocodingApi();
 
-	if (!isoPolygonData || !polygonData || !polygonData[0]) return (<></>)
+	if (!isochroneData || !polygonData || !polygonData[0]) return (<></>)
 
 	const city = polygonData[0].city_geom[0];
 

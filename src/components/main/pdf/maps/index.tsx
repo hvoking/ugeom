@@ -12,7 +12,7 @@ import { BasemapsSelectors } from './basemaps';
 // Context imports
 import { useMapbox } from '../../../context/maps/mapbox';
 import { useGeo } from '../../../context/filters/geo';
-import { useIsoPolygonApi } from '../../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../../context/api/isochrone';
 
 // Third-party imports
 import { Map } from 'react-map-gl';
@@ -21,7 +21,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 export const PdfMaps = () => {
 	const { pdfMapRef } = useMapbox();
 	const { viewport, setMarker, setPlaceCoordinates } = useGeo();
-	const { setInitialMarker } = useIsoPolygonApi();
+	const { setInitialMarker } = useIsochroneApi();
 
 	const onDblClick = useCallback((event: any) => {
 		const lng = event.lngLat.lng;

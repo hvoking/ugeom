@@ -4,14 +4,14 @@ import './styles.scss';
 
 // Context imports
 import { useGeo } from '../../../../context/filters/geo';
-import { useIsoPolygonApi } from '../../../../context/api/isoPolygon';
+import { useIsochroneApi } from '../../../../context/api/isochrone';
 
 // Third party imports
 import { NavigationControl } from 'react-map-gl';
 
 export const MapControllers = () => {
 	const { viewport, setViewport, placeCoordinates, setPlaceCoordinates } = useGeo();
-	const { setInitialMarker } = useIsoPolygonApi();
+	const { setInitialMarker } = useIsochroneApi();
 
 	return (
 		<>
