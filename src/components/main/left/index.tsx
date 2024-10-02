@@ -2,7 +2,7 @@
 import { Prices } from './prices';
 import { Timeseries } from './timeseries';
 import { SvgMap } from './svgMap';
-import { UserMessage } from '../../utils/message';
+import { Message } from './message';
 import './styles.scss';
 
 // Context imports
@@ -27,7 +27,7 @@ export const Left = () => {
 						/>
 						<Timeseries/>
 					</div> :
-					<UserMessage/>
+					<Message/>
 				}
 			</div>
 		</div>

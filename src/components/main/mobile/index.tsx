@@ -7,10 +7,8 @@ import { Header } from './header';
 import { Prices } from './prices';
 import { Timeseries } from './timeseries';
 import { SvgMap } from './svgMap';
+import { Message } from './message';
 import './styles.scss';
-
-// Utils imports
-import { UserMessage } from '../../utils/message';
 
 // Context imports
 import { usePricesApi } from '../../context/api/imoveis/prices';
@@ -21,7 +19,7 @@ export const Mobile = () => {
 ;
 	if (!pricesData) return (
 		<div className="bottom">
-			<UserMessage/>		
+			<Message/>		
 		</div>
 	)
 

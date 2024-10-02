@@ -1,7 +1,7 @@
 // App imports
 import './styles.scss';
 
-export const UserMessage = () => {
+export const Message = () => {
 	return (
 		<div className="sidebar-item-wrapper">
 			<div style={{display: "grid", gridTemplateRows: "min-content auto"}}>
@@ -18,4 +18,4 @@ export const UserMessage = () => {
 	)
 }
 
-UserMessage.displayName="UserMessage";
+Message.displayName="Message";
